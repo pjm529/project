@@ -17,7 +17,7 @@
 %>
 	<script>
 	 		alert("접근 권한이 없습니다.");
-	 		window.location.href = '/project/homepage/index.jsp';
+	 		window.location.href = '../../index.jsp';
 	</script>
 		
 <%	} else {
@@ -55,9 +55,9 @@
 	}
 	
 	if(sessId.equals("admin")){
-		response.sendRedirect("/project/homepage/user/member.jsp");
+		response.sendRedirect("../member.jsp");
 	} else {
-		response.sendRedirect("/project/homepage/logProcess/logout.jsp");
+		response.sendRedirect("../../logProcess/logout.jsp");
 	}
 %>
 
@@ -99,7 +99,7 @@ public void init(Connection conn, PreparedStatement pstmt) throws SQLException{
 %>	
 		<script>
 	 		alert("접근 권한이 없습니다.");
-	 		window.location.href = '/project/homepage/index.jsp';
+	 		window.location.href = '../../index.jsp';
 		</script>
 <%	
 		}

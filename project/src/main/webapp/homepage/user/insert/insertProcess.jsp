@@ -64,5 +64,5 @@
 		conn.close();
 	}
 	
-	response.sendRedirect("/project/homepage/index.jsp");
+	response.sendRedirect("../../index.jsp");
 %>

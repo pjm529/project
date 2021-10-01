@@ -16,7 +16,7 @@
 %>
 	<script>
 	 		alert("접근 권한이 없습니다.");
-	 		window.location.href = '/project/homepage/index.jsp';
+	 		window.location.href = '../../index.jsp';
 	</script>
 		
 <%	} else {
@@ -78,18 +78,18 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 수정</title>
-<link rel="stylesheet" href="/project/homepage/css/signup.css">
+<link rel="stylesheet" href="../../css/signup.css">
 </head>
 
 <body>
-    <script src="/project/homepage/js/jquery-3.6.0.min.js"></script>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
 
 
     <div id="wrap">
 
 
         <div id="header">
-            <a href="/project/homepage/index.jsp"><img src="/project/homepage/images/index/logo.png" id="logo"></a>
+            <a href="../../index.jsp"><img src="../../images/index/logo.png" id="logo"></a>
         </div>
 
         <hr>

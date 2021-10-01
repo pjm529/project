@@ -18,7 +18,7 @@
 %>
 	<script>
 	 		alert("접근 권한이 없습니다.");
-	 		window.location.href = '/project/homepage/index.jsp';
+	 		window.location.href = '../../index.jsp';
 	</script>
 		
 <%	} else {
@@ -76,10 +76,10 @@
 		conn.close();
 	}
 	if(sessId.equals("admin")){
-		response.sendRedirect("/project/homepage/user/member.jsp");
+		response.sendRedirect("../member.jsp");
 	} else {
 		session.setAttribute("name", name);
-		response.sendRedirect("/project/homepage/index.jsp");
+		response.sendRedirect("../../index.jsp");
 	}
 		
 %>
@@ -88,7 +88,7 @@
 %>	
 		<script>
 	 		alert("접근 권한이 없습니다.");
-	 		window.location.href = '/project/homepage/index.jsp';
+	 		window.location.href = '../../index.jsp';
 		</script>
 <%	
 		}

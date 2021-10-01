@@ -15,7 +15,7 @@
 %>
 	<script>
 	 		alert("접근 권한이 없습니다.");
-	 		window.location.href = '/project/homepage/index.jsp';
+	 		window.location.href = '../../index.jsp';
 	</script>
 		
 <%	} else {
@@ -150,7 +150,7 @@
 %>	
 		<script>
 	 		alert("접근 권한이 없습니다.");
-	 		window.location.href = '/project/homepage/index.jsp';
+	 		window.location.href = '../../index.jsp';
 		</script>
 <%	
 		}

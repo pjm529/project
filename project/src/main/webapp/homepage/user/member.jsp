@@ -8,7 +8,7 @@
 %>
 	<script>
 	 		alert("접근 권한이 없습니다.");
-	 		window.location.href = '/project/homepage/index.jsp';
+	 		window.location.href = '../index.jsp';
 	</script>
 		
 <%	} else {
@@ -24,12 +24,12 @@
 <body style="text-align:center; background-color: #eee;">
 		<br>
 		<div id="header">
-            <a href="/project/homepage/index.jsp"><img src="/project/homepage/images/index/logo.png" id="logo"></a>
+            <a href="../index.jsp"><img src="../images/index/logo.png" id="logo"></a>
         </div>
 
         <hr style="width:1200px;">
 
-		<h2><a href="/project/homepage/user/member.jsp" style="color: black">회원목록</a></h2>
+		<h2><a href="member.jsp" style="color: black">회원목록</a></h2>
 		<jsp:include page="viewList/viewUserList.jsp"></jsp:include><br>
 </body>
 </html>
@@ -39,7 +39,7 @@
 %>	
 		<script>
 	 		alert("접근 권한이 없습니다.");
-	 		window.location.href = '/project/homepage/index.jsp';
+	 		window.location.href = '../index.jsp';
 		</script>
 <%	
 		}
