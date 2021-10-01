@@ -1,3 +1,4 @@
+<%@page import="encoding.SHA256"%>
 <%@page import="javax.sql.DataSource"%>
 <%@page import="javax.naming.InitialContext"%>
 <%@page import="javax.naming.Context"%>
@@ -193,7 +194,7 @@
 <% } else {		
 %> 
 		<script>
-			alert("비정상적인 접근입니다.3");
+			alert("비정상적인 접근입니다.");
 			window.location.href = '../../../index.jsp';
 		</script>
 <%	}

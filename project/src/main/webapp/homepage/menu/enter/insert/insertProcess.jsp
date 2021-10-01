@@ -1,3 +1,4 @@
+<%@page import="encoding.SHA256"%>
 <%@page import="javax.sql.DataSource"%>
 <%@page import="javax.naming.InitialContext"%>
 <%@page import="javax.naming.Context"%>
@@ -27,6 +28,10 @@
 	String writer = request.getParameter("writer");
 	String pw = request.getParameter("pw");
 	String writer_id = (String)session.getAttribute("id");
+	
+	SHA256 hasing = new SHA256();
+	String hashpw = SHA256.encodeSha256(pw);
+	
 
 	if(title != null && content != null) {
 		Connection conn = null;
@@ -46,7 +51,7 @@
 		 		pstmt.setString(2, content);
 		 		pstmt.setString(3, writer);
 		 		pstmt.setString(4, writer_id);
-		 		pstmt.setString(5, pw);
+		 		pstmt.setString(5, hashpw);
 		 	
 		 		// 4. 쿼리 실행
 		 		pstmt.executeUpdate();

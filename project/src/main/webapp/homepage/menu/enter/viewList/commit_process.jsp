@@ -1,3 +1,4 @@
+<%@page import="encoding.SHA256"%>
 <%@page import="javax.sql.DataSource"%>
 <%@page import="javax.naming.InitialContext"%>
 <%@page import="javax.naming.Context"%>
@@ -13,7 +14,8 @@
 		String pw_text = request.getParameter("pw_text");
 		String pw = null;
 		
-		
+		SHA256 hasing = new SHA256();
+		String hashpw = SHA256.encodeSha256(pw_text);
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -47,8 +49,8 @@
 			pstmt.close();
 		}
 		
-		if(pw_text.equals(pw)) {
-			session.setAttribute("pw_text", pw_text);
+		if(hashpw.equals(pw)) {
+			session.setAttribute("pw_text", hashpw);
 			response.sendRedirect("viewEnter.jsp?num="+num);
 			
 		} else {
