@@ -50,7 +50,7 @@
 	    conn = ds.getConnection();
 	
 		String sql = "update user set pw = ?, name = ?, phone = ?, email = ?, email_domain = ?,"
-				+ " year = ?,  month = ?, day = ?, gender = ?, reg_date = current_timestamp where num =" + num;
+				+ " year = ?,  month = ?, day = ?, gender = ?, where num =" + num;
 	
 		// 3. PreparedStatement 생성
 		pstmt = conn.prepareStatement(sql);
