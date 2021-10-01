@@ -434,7 +434,7 @@
                                         } else {
                                     	alert("수정이 완료되었습니다.");
             							$("form").attr("onsubmit", "return true;");
-            							$("form").attr("action", "updateProcess.jsp").submit();;
+            							$("form").attr("action", "updateProcessMy.jsp").submit();;
                                     	}
                                 	}
                            	 	}

@@ -27,6 +27,7 @@
 
 <%
 	
+	String pw = request.getParameter("pw");
 	String name = request.getParameter("name");
 	String email = request.getParameter("email");
 	String email_domain = request.getParameter("email_domain");
@@ -36,7 +37,9 @@
 	String day = request.getParameter("day");
 	String gender = request.getParameter("gender");
 	
+	SHA256 hasing = new SHA256();
 	
+	String hashpw = SHA256.encodeSha256(pw);
 	
 	Connection conn = null;
 	PreparedStatement pstmt = null;
@@ -46,20 +49,21 @@
 	    DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/MySQL");
 	    conn = ds.getConnection();
 	
-		String sql = "update user set name = ?, phone = ?, email = ?, email_domain = ?,"
+		String sql = "update user set pw = ?, name = ?, phone = ?, email = ?, email_domain = ?,"
 				+ " year = ?,  month = ?, day = ?, gender = ? where num =" + num;
 	
 		// 3. PreparedStatement 생성
 		pstmt = conn.prepareStatement(sql);
 	
-		pstmt.setString(1, name);
-		pstmt.setString(2, phone);
-		pstmt.setString(3, email);
-		pstmt.setString(4, email_domain);
-		pstmt.setString(5, year);
-		pstmt.setString(6, month);
-		pstmt.setString(7, day);
-		pstmt.setString(8, gender);
+		pstmt.setString(1, hashpw);
+		pstmt.setString(2, name);
+		pstmt.setString(3, phone);
+		pstmt.setString(4, email);
+		pstmt.setString(5, email_domain);
+		pstmt.setString(6, year);
+		pstmt.setString(7, month);
+		pstmt.setString(8, day);
+		pstmt.setString(9, gender);
 	
 		// 4. 쿼리 실행
 		pstmt.executeUpdate();
