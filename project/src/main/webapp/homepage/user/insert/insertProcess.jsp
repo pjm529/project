@@ -1,4 +1,5 @@
 
+<%@page import="encoding.SHA256"%>
 <%@page import="javax.sql.DataSource"%>
 <%@page import="javax.naming.InitialContext"%>
 <%@page import="javax.naming.Context"%>
@@ -21,6 +22,10 @@
 	String day = request.getParameter("day");
 	String gender = request.getParameter("gender");
 	
+	SHA256 hasing = new SHA256();
+	
+	String hashpw = SHA256.encodeSha256(pw);
+	
 	// 1. JDBC 드라이버 로딩
 	Class.forName("com.mysql.jdbc.Driver");
 	
@@ -38,7 +43,7 @@
 		pstmt = conn.prepareStatement(sql);
 	
 		pstmt.setString(1, id);
-		pstmt.setString(2, pw);
+		pstmt.setString(2, hashpw);
 		pstmt.setString(3, name);
 		pstmt.setString(4, phone);
 		pstmt.setString(5, email);

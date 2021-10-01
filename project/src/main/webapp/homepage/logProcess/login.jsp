@@ -1,3 +1,4 @@
+<%@page import="encoding.SHA256"%>
 <%@page import="javax.sql.DataSource"%>
 <%@page import="javax.naming.InitialContext"%>
 <%@page import="javax.naming.Context"%>
@@ -19,6 +20,10 @@
 	String id = request.getParameter("id");
 	String pw = request.getParameter("pw");
 	
+	SHA256 hasing = new SHA256();
+	
+	String hashpw = SHA256.encodeSha256(pw); //비밀번호 해시
+	
 	int i = 0;
 	
 	Connection conn = null;
@@ -31,15 +36,11 @@
 	    conn = ds.getConnection();
 	
 		String sql = "select num, id, pw, name from user order by num";
-		// 2. 데이터베이스 커넥션 생성
 	
-		// 3. PreparedStatement 생성
 		pstmt = conn.prepareStatement(sql);
 	
-		// 4. 쿼리 실행
 		rs = pstmt.executeQuery();
 	
-		// 5. 쿼리 실행 결과 출력
 		while (rs.next()) {
 			numBuff.append(rs.getString("num"));
 			numBuff.append(",");
@@ -98,13 +99,12 @@
 		let name_arr = nameStr.split(",");
 	    
 	    let input_id = "<%=id%>";
-        let input_pw = "<%=pw%>";
+        let input_pw = "<%=hashpw%>";  
         
         
         let name = document.getElementById("name");
         let num = document.getElementById("num");
         let id = document.getElementById("id");
-        let pw = document.getElementById("pw");
         
     	
     	index = $.inArray(input_id, id_arr);

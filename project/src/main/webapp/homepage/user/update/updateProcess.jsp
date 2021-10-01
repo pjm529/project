@@ -1,3 +1,4 @@
+<%@page import="encoding.SHA256"%>
 <%@page import="javax.sql.DataSource"%>
 <%@page import="javax.naming.InitialContext"%>
 <%@page import="javax.naming.Context"%>
@@ -36,6 +37,9 @@
 	String day = request.getParameter("day");
 	String gender = request.getParameter("gender");
 	
+	SHA256 hasing = new SHA256();
+	
+	String hashpw = SHA256.encodeSha256(pw);
 	
 	Connection conn = null;
 	PreparedStatement pstmt = null;
@@ -51,7 +55,7 @@
 		// 3. PreparedStatement 생성
 		pstmt = conn.prepareStatement(sql);
 	
-		pstmt.setString(1, pw);
+		pstmt.setString(1, hashpw);
 		pstmt.setString(2, name);
 		pstmt.setString(3, phone);
 		pstmt.setString(4, email);

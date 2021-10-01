@@ -127,7 +127,7 @@
                         </h4>
 
                         <span>
-                            <input id="pw" name="pw" type="password" value=<%=pw %>>
+                            <input id="pw" name="pw" type="password" maxlength="16" >
                         </span>
 
                         <div class="err_pw">
@@ -147,7 +147,7 @@
                         </h4>
 
                         <span>
-                            <input id="chkpw" type="password" value=<%=pw %>>
+                            <input id="chkpw" type="password" maxlength="16">
                         </span>
 
                         <div class="err_chkpw">

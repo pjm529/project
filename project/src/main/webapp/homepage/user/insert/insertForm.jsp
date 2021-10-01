@@ -82,7 +82,7 @@
                         </h4>
 
                         <span>
-                            <input id="id" name="id" type="text" autocomplete="off">
+                            <input id="id" name="id" type="text" autocomplete="off" maxlength="12">
                         </span>
 
                         <div class="err_id">
@@ -110,7 +110,7 @@
                         </h4>
 
                         <span>
-                            <input id="pw" name="pw" type="password">
+                            <input id="pw" name="pw" type="password" maxlength="16">
                         </span>
 
                         <div class="err_pw">
@@ -130,7 +130,7 @@
                         </h4>
 
                         <span>
-                            <input id="chkpw" type="password">
+                            <input id="chkpw" type="password" maxlength="16">
                         </span>
 
                         <div class="err_chkpw">
@@ -153,7 +153,7 @@
                         </h4>
 
                         <span>
-                            <input id="name" name="name" type="text" autocomplete="off">
+                            <input id="name" name="name" type="text" autocomplete="off" maxlength="6">
                         </span>
 
                         <div class="err_name">
@@ -173,7 +173,7 @@
                         </h4>
 
                         <span>
-                            <input id="phone" name="phone" type="text" autocomplete="off">
+                            <input id="phone" name="phone" type="text" autocomplete="off" maxlength="11">
                         </span>
 
                         <div class="err_phone">
@@ -224,7 +224,7 @@
                         </h4>
 
                         <span>
-                            <input id="year" name="year" type="text" autocomplete="off" placeholder="년 (4자리)">
+                            <input id="year" name="year" type="text" autocomplete="off" placeholder="년 (4자리)" maxlength="4">
                         </span>
 
                         <span>
