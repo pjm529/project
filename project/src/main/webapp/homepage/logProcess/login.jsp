@@ -76,7 +76,6 @@
 
 	<form action="" post="">
 		<input type="hidden" id="id" name="id">
-		<input type="hidden" id="pw" name="pw">
 		<input type="hidden" id="name" name="name">
 		<input type="hidden" id="num" name="num">
 	</form>
@@ -85,7 +84,7 @@
     <script src="../js/index.js"></script>
     <script>
     	
-	 	// DB에서 id,pw,name목록 받아오기
+	 	// DB에서 num, id,pw,name목록 받아오기
 	 	let numStr="<%=numBuff.toString()%>"
 		let num_arr = numStr.split(",");
 	 	
