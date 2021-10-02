@@ -87,10 +87,39 @@
 
                     </div>
                     
+                    <div id="inputemail">
+
+                        <h4 class="title_email">
+                            <label for="email">이메일</label>
+                        </h4>
+
+                        <span>
+                            <input id="email" name="email" type="text" autocomplete="off">
+                        </span>
+                        
+                        <span>
+                            <select id="email_domain" name="email_domain">
+                                <option value="@google.com">@google.com</option>
+                                <option value="@naver.com">@naver.com</option>
+                                <option value="@daum.net">@daum.net</option>
+                                <option value="@nate.com">@nate.com</option>
+                                <option value="">직접입력</option>
+                            </select>
+                        </span>
+
+                        <div class="err_email">
+
+                            <span class="text_err_email">
+                                이메일을 입력해주세요.
+                            </span>
+                            
+                        </div>
+
+                    </div>
+                    
                 </div>
 
-                <div>
-                </div>
+                
             </form>
 
             <button type="submit" id="btn"><b>비밀번호 찾기</b></button>
@@ -105,11 +134,13 @@
 
     <script>
         $(function () {
-            hide(3);
+            hide(4);
             
             // form에 있는 정보 받아오기
+            let id = document.getElementById("id");
             let name = document.getElementById("name");
             let phone = document.getElementById("phone");
+            let email = document.getElementById("email");
          
 
             $("#btn").on({
@@ -122,19 +153,34 @@
             });
 
             $("#btn").click(function () {
-            	if (name.value == "" || name.value.length > 6) {
-                    $(".err_name").show();
-                    hide(1);
-                } else {
-                    $(".err_name").hide();
-                    
-                    // phone 체크
-                    if(phone.value.length != 11) {
-                    	$(".err_phone").show();
+            	if(id.value.length < 6) {
+            		$(".err_id").show();
+            		
+            		hide(3);
+            	} else {
+            		$(".err_id").hide();
+            		
+            		if (name.value == "" || name.value.length > 6) {
+                        $(".err_name").show();
+                        
+                        hide(2);
                     } else {
-                    	search();
+                        $(".err_name").hide();
+                        
+                        if(phone.value.length != 11) {
+                        	$(".err_phone").show();
+                        	hide(1);
+                        } else {
+                        	$(".err_phone").hide();
+                        	
+                        	if(email.value == "") {
+                        		$(".err_email").show();
+                        	} else {
+                        		search();
+                        	}
+                        }
                     }
-                }
+            	}
             });
 
             function search() {
@@ -143,13 +189,12 @@
             }
 
             function hide(index) {
-                let err_msg = [".err_id", ".err_name", ".err_phone"];
+                let err_msg = [".err_id", ".err_name", ".err_phone", ".err_email"];
 
-                for (let i = 2; i >= 3 - index; i--) {
+                for (let i = 3; i >= 4 - index; i--) {
                     $(err_msg[i]).hide();
                 }
             }
-
 
         });
     </script>
