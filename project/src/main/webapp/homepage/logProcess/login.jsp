@@ -19,6 +19,7 @@
 	
 	String id = request.getParameter("id");
 	String pw = request.getParameter("pw");
+	String checkbox = request.getParameter("checkbox");
 	
 	SHA256 hasing = new SHA256();
 	
@@ -74,10 +75,11 @@
 </head>
 <body>
 
-	<form action="" post="">
+	<form action="" post="post">
 		<input type="hidden" id="id" name="id">
 		<input type="hidden" id="name" name="name">
 		<input type="hidden" id="num" name="num">
+		<input type="hidden" id="checkbox" name="checkbox" value="<%=checkbox %>">
 	</form>
 		
 	 <script src="../js/jquery-3.6.0.min.js"></script>

@@ -165,6 +165,10 @@ hr{
     font-size: 13px;
 }
 
+#checkbox{
+	margin-left: 10px;
+    top: 0;
+}
 .user_id{
     width: 150px;
     border-radius: 5px;
