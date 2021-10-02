@@ -163,8 +163,10 @@
 							e.printStackTrace();
 						} finally{
 							rs.close();
+							rs2.close();
 							conn.close();
 							pstmt.close();
+							pstmt2.close();
 						}
 					%>
 	
