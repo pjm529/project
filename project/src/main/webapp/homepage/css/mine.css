@@ -257,3 +257,6 @@ table img{
 	 overflow: hidden; 
 	 text-overflow: ellipsis;
 }
+#logined {
+	margin-left: 50px;
+}
