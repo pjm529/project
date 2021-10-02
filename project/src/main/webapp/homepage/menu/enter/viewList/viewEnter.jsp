@@ -139,7 +139,7 @@
 				<form action="" method="post">
 					<input type="hidden" name="enter_no" value=<%=num%>> <b>댓글</b><br>
 					<input id="comment_text" name="comment_text" type="text" maxlength="30" autocomplete="off">
-					<button id="add_comment_btn" style="height: 50px;">
+					<button id="add_comment_btn">
 						<b>댓글달기</b>
 					</button>
 				</form>

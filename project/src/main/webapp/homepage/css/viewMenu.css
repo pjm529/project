@@ -125,3 +125,7 @@ table {
 	height: 50px; 
 	width: 920px;
 }
+
+#add_comment_btn {
+	height: 50px;
+}
