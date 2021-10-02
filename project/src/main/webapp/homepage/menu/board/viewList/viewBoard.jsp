@@ -245,22 +245,29 @@ try {
 			});
 
 			$("#add_comment_btn").click(function() {
-					if (sessId != nullid) {
-						if(comment_text.value == "") {
-							alert("내용을 입력하세요.");
-						} else {
-							$("form").attr("onsubmit", "return true;");
-							$("form").attr("action","../../comment/board_comment/insertProcess.jsp").submit();
-						}
-						
+				if (sessId != nullid) {
+					if(comment_text.value == "") {
+						alert("내용을 입력하세요.");
 					} else {
-						alert("로그인 후 이용하세요.");
+						$("form").attr("onsubmit", "return true;");
+						$("form").attr("action","../../comment/board_comment/insertProcess.jsp").submit();
 					}
+				} else {
+					alert("로그인 후 이용하세요.");
+				}
 			});
 
 			$(".delete_comment_btn").click(function() {
+				
+				result = confirm("댓글을 삭제하시겠습니까?");
+				
+				if(result) {
+					
+					alert("삭제가 완료되었습니다.");
 					$("form").attr("onsubmit", "return true;");
 					$("form").attr("action","../../comment/board_comment/deleteProcess.jsp").submit();
+				}
+				
 			});
 		});
 	</script>
