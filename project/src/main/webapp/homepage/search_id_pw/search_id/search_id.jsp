@@ -52,7 +52,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입</title>
+<title>영남인재교육원 : 아이디찾기</title>
 <link rel="stylesheet" href="../../css/signup.css">
 </head>
 
