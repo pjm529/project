@@ -263,7 +263,6 @@ try {
 				
 				if(result) {
 					
-					alert("삭제가 완료되었습니다.");
 					$("form").attr("onsubmit", "return true;");
 					$("form").attr("action","../../comment/board_comment/deleteProcess.jsp").submit();
 				}

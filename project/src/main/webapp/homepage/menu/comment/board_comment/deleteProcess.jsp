@@ -55,8 +55,12 @@
 		pstmt.close();
 		conn.close();
 	}
-	
-	response.sendRedirect("../../board/viewList/viewBoard.jsp?num="+board_no);
+%>
+	<script>
+	 	alert("삭제가 완료되었습니다.");
+	 	window.location.href = '../../board/viewList/viewBoard.jsp?num=<%=board_no%>';
+	</script>
+<%
 %>
 
 <%!	
