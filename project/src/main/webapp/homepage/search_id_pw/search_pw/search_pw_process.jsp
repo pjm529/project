@@ -61,19 +61,11 @@
 		conn.close();
 	}
 	
-
-%>
-
-<%
 	if(success){
 		session.setAttribute("search_id", id);
 		response.sendRedirect("update_pw_form.jsp");
-%>
-<%
 	} else {
-%>
-	<jsp:include page="search_fail.jsp"></jsp:include>
-<%		
+		response.sendRedirect("search_fail.jsp");
 	}
 %>
 

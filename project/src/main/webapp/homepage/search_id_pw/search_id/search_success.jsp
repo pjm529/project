@@ -4,9 +4,6 @@
    
 <%
 	String id = request.getParameter("id");
-%>
-
-<%
 	if(id == null) { 
 %>
 	<script>
@@ -28,9 +25,7 @@
 <body>
     <script src="../../js/jquery-3.6.0.min.js"></script>
 
-
     <div id="wrap">
-
 
         <div id="header">
             <a href="../../index.jsp"><img src="../../images/index/logo.png" id="logo"></a>
@@ -43,14 +38,11 @@
 				<h4 class="title_id">
             		<label for="id">아이디</label>
             	</h4>
-			
                
  				<span>
        				<input id="id" name="id" type="text" value=<%=id %> readonly>
     			</span>
  
- 
-                
                 <br>
                 
             	<button id="btn" style="width: 127px"><b>로그인하기</b></button>

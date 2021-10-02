@@ -13,8 +13,6 @@
 	String phone = request.getParameter("phone");
 	String id = null;
 	
-	// 1. JDBC 드라이버 로딩
-	
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
@@ -26,13 +24,11 @@
 	
 		String sql = "select id from user where name = ? and phone = ?";
 	
-		// 3. PreparedStatement 생성
 		pstmt = conn.prepareStatement(sql);
 	
 		pstmt.setString(1, name);
 		pstmt.setString(2, phone);
 	
-		// 4. 쿼리 실행
 		rs = pstmt.executeQuery();
 		
 		if(rs.next()) {
@@ -48,10 +44,6 @@
 		conn.close();
 	}
 	
-
-%>
-
-<%
 	if(id!=null){
 		
 		response.sendRedirect("search_success.jsp?id="+id);

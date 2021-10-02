@@ -10,9 +10,7 @@
 
 <%
 	String sessId = (String) session.getAttribute("search_id");
-%>
 
-<%
 	if(sessId == null) { 
 %>
 	<script>

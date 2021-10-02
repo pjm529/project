@@ -133,8 +133,6 @@
                     $(err_msg[i]).hide();
                 }
             }
-
-
         });
     </script>
 </body>

@@ -13,9 +13,7 @@
 <body>
     <script src="../../js/jquery-3.6.0.min.js"></script>
 
-
     <div id="wrap">
-
 
         <div id="header">
             <a href="../../index.jsp"><img src="../../images/index/logo.png" id="logo"></a>
@@ -26,8 +24,6 @@
         <div id="container">
 
             <form action="insertProcess.jsp" method="POST">
-
-               
 
                 <div id="userinfo">
 
@@ -118,7 +114,6 @@
                     </div>
                     
                 </div>
-
                 
             </form>
 
