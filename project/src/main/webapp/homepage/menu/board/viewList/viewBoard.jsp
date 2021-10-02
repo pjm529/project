@@ -146,7 +146,7 @@ try {
 			<div id="comment" style="margin-left: 250px;">
 				<form action="" method="post">
 					<input type="hidden" name="board_no" value=<%=num%>> <b>댓글</b><br>
-					<input id="commnet_text" name="comment_text" type="text"
+					<input id="comment_text" name="comment_text" type="text"
 						style="height: 50px; width: 920px;" maxlength="30" autocomplete="off">
 					<button id="add_comment_btn" style="height: 50px;">
 						<b>댓글달기</b>
@@ -215,7 +215,8 @@ try {
         	let sessId = "<%=sessId%>";
         	let id = "<%=writer_id%>";
 			let result;
-
+			let comment_text = document.getElementById("comment_text");
+			
 			$("#update_btn").click(function() {
 				if (sessId == id) {
 						$("form").attr("onsubmit", "return true;");
@@ -245,8 +246,13 @@ try {
 
 			$("#add_comment_btn").click(function() {
 					if (sessId != nullid) {
-						$("form").attr("onsubmit", "return true;");
-						$("form").attr("action","../../comment/board_comment/insertProcess.jsp").submit();
+						if(comment_text.value == "") {
+							alert("내용을 입력하세요.");
+						} else {
+							$("form").attr("onsubmit", "return true;");
+							$("form").attr("action","../../comment/board_comment/insertProcess.jsp").submit();
+						}
+						
 					} else {
 						alert("로그인 후 이용하세요.");
 					}
