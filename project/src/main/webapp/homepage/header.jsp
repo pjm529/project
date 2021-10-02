@@ -15,7 +15,7 @@
 		<li><a href="/project/homepage/menu/recruit/recruit.jsp">모집중인과정</a></li>
 		<li><a href="/project/homepage/menu/board/board.jsp">게시판</a></li>
 		<li><a href="/project/homepage/menu/ad/ad.jsp">구인정보</a></li>
-		<li><a href="/project/homepage/menu/enter/enter.jsp">입학상담</a></li>
+		<li><a href="/project/homepage/menu/enter/enter.jsp">문의사항</a></li>
 		<li><a href="/project/homepage/menu/introduce/introduce.jsp">교육원소개</a></li>
 		<li><a href="/project/homepage/menu/road/road.jsp">찾아오는길</a></li>
 	</ul>

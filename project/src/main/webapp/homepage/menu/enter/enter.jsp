@@ -26,7 +26,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>영남인재교육원 : 입학상담</title>
+<title>영남인재교육원 : 문의사항</title>
 <link rel="stylesheet" href="../../css/menu.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -44,7 +44,7 @@
         <div id="container">
 		        
         	<div id="menu_title">
-        		<h2>입학상담</h2>
+        		<h2>문의사항</h2>
         		
         		<br>
         	</div>

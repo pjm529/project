@@ -70,7 +70,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>영남인재교육원 : 입학상담</title>
+<title>영남인재교육원 : 문의사항</title>
 <link rel="stylesheet" href="../../../css/viewMenu.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"

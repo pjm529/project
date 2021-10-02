@@ -9,7 +9,7 @@
 	pageEncoding="UTF-8"%>
 	
 <a href="menu/enter/enter.jsp">
-	<p>입학상담</p>
+	<p>문의사항</p>
 </a>
 <hr>	
 <%

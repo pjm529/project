@@ -73,7 +73,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>영남인재교육원 : 공지사항</title>
+<title>영남인재교육원 : 문의사항</title>
 <link rel="stylesheet" href="../../../css/insert.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -92,7 +92,7 @@
 
             <div>
                 <div>
-                    <h2>공지사항</h2>
+                    <h2>문의사항</h2>
                 </div>
                 <hr id="noticehr">
                 <div>
