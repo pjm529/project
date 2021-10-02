@@ -96,7 +96,7 @@ public void init(Connection conn, PreparedStatement pstmt) throws SQLException{
 		} else {
 %>	
 		<script>
-	 		alert("접근 권한이 없습니다.");
+	 		alert("댓글의 작성자가 아닙니다.");
 	 		window.location.href = '../../board/viewList/viewBoard.jsp?num=<%=board_no%>';
 		</script>
 <%		
