@@ -17,58 +17,55 @@
 	 		window.location.href = '../../../index.jsp';
 	</script>
 		
-<%	} else {
-	String title = null;
-	String content = null;
-	String writer = null;
-	String writer_id = null;
-	String training_period = null;
-	String recruit_period = null;
-	String time = null;
-	String count = null;
-	String location = null;
-	String professor = null;
-	
-	Connection conn = null;
-	PreparedStatement pstmt = null;
-	ResultSet rs = null;
-	
-	String sessId = (String)session.getAttribute("id");
-	try {
-		Context init = new InitialContext();
-	    DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/MySQL");
-	    conn = ds.getConnection();
-	
-		String sql = "select * from recruit where num=" + num;
-		// 2. 데이터베이스 커넥션 생성
-	
-		// 3. PreparedStatement 생성
-		pstmt = conn.prepareStatement(sql);
-	
-		// 4. 쿼리 실행
-		rs = pstmt.executeQuery();
-	
-		// 5. 쿼리 실행 결과 출력
-		if (rs.next()) {
-			title = rs.getString("title");
-			content = rs.getString("content");
-			writer = rs.getString("writer");
-			writer_id = rs.getString("writer_id");
-			training_period = rs.getString("training_period");
-			recruit_period = rs.getString("recruit_period");
-			time = rs.getString("time");
-			count = rs.getString("count");
-			location = rs.getString("location");
-			professor = rs.getString("professor");
+<%	
+	} else {
+		String title = null;
+		String content = null;
+		String writer = null;
+		String writer_id = null;
+		String training_period = null;
+		String recruit_period = null;
+		String time = null;
+		String count = null;
+		String location = null;
+		String professor = null;
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sessId = (String)session.getAttribute("id");
+		try {
+			Context init = new InitialContext();
+		    DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/MySQL");
+		    conn = ds.getConnection();
+		
+			String sql = "select * from recruit where num=" + num;
+		
+			pstmt = conn.prepareStatement(sql);
+		
+			rs = pstmt.executeQuery();
+		
+			if (rs.next()) {
+				title = rs.getString("title");
+				content = rs.getString("content");
+				writer = rs.getString("writer");
+				writer_id = rs.getString("writer_id");
+				training_period = rs.getString("training_period");
+				recruit_period = rs.getString("recruit_period");
+				time = rs.getString("time");
+				count = rs.getString("count");
+				location = rs.getString("location");
+				professor = rs.getString("professor");
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}  finally{
+			rs.close();
+			conn.close();
+			pstmt.close();
 		}
-	} catch (SQLException e) {
-		System.out.println(e.getMessage());
-		e.printStackTrace();
-	}  finally{
-		rs.close();
-		conn.close();
-		pstmt.close();
-	}
 %>
 <!DOCTYPE html>
 <html>
@@ -204,4 +201,6 @@
 </body>
 
 </html>
-<%}%>
+<%
+	}
+%>

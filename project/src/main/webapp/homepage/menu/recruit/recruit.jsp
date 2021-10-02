@@ -7,8 +7,8 @@
 <%@ page import="java.sql.SQLException"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<% String sessId = (String)session.getAttribute("id"); %>
-<%
+<% 
+	String sessId = (String)session.getAttribute("id"); 
 	String search_text = request.getParameter("search_text");
 	String search_select = request.getParameter("search_select");
 
@@ -46,7 +46,6 @@
         		<h2>모집중인과정</h2>
         		<br>
         	</div>
-        	
         	
         	<div id="search">
         		<form action="recruit.jsp" method="get">
@@ -87,8 +86,6 @@
 	                </tr>
 	
 	                <%
-					// 1. JDBC 드라이버 로딩
-			
 					Connection conn = null;
 					PreparedStatement pstmt = null;
 					ResultSet rs = null;
@@ -102,12 +99,9 @@
 						String sql = "select * from recruit where " 
 								+ search_select + " like '%" + search_text + "%' order by num desc";
 						
-						// 3. PreparedStatement 생성
 						pstmt = conn.prepareStatement(sql);
-						// 4. 쿼리 실행
 						rs = pstmt.executeQuery();
 						
-						// 5. 쿼리 실행 결과 출력
 						while(rs.next()) {
 					%>
 					<tr>
@@ -151,7 +145,6 @@
 							pstmt.close();
 						}
 					%>
-	
 	                
 			    </table>
 			    
