@@ -46,5 +46,5 @@
 		conn.close();
 	}
 	
-	response.sendRedirect("../../board/viewList/viewBoard2.jsp?num="+board_no);
+	response.sendRedirect("../../board/viewList/viewBoard.jsp?num="+board_no);
 %>
