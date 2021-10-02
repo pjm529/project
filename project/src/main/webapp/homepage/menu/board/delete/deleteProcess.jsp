@@ -26,6 +26,7 @@
 		// 1. JDBC 드라이버 로딩
 		Connection conn = null;
 		PreparedStatement pstmt = null;
+		PreparedStatement pstmt2 = null;
 		
 		
 		try {
@@ -35,13 +36,13 @@
 			
 			
 			String sql = "delete from board where num =" + num;
+			String sql2 = "delete from board_comment where board_no =" + num;
 			
-			// 3. PreparedStatement 생성
 			pstmt = conn.prepareStatement(sql);
-		
+			pstmt2 = conn.prepareStatement(sql2);
 			
-			// 4. 쿼리 실행
 			pstmt.executeUpdate();
+			pstmt2.executeUpdate();
 			
 			init(conn, pstmt); // 게시글번호 정렬
 				
@@ -49,10 +50,9 @@
 			System.out.println(e.getMessage());
 			e.printStackTrace();
 		} finally {
-			// 6. 사용한 pstmt 종료
 			pstmt.close();
+			pstmt2.close();
 		
-			// 7. 커넥션 종료
 			conn.close();
 		} 
 		
@@ -76,6 +76,7 @@ public void init(Connection conn, PreparedStatement pstmt) throws SQLException{
 	
 	int count=0;
 	String sql = "select count(*) as 'count' from board";
+	String sql2 = "select count(*) as 'count' from board_comment";
 	
 	try {
 		pstmt = conn.prepareStatement(sql);
@@ -100,5 +101,31 @@ public void init(Connection conn, PreparedStatement pstmt) throws SQLException{
 	} finally {
 		rs.close();
 	} 
+	
+	try {
+		pstmt = conn.prepareStatement(sql2);
+		rs = pstmt.executeQuery();
+		
+		if (rs.next()) {
+			count = rs.getInt("count");
+		}
+		
+		String sqlList[] = {
+				"ALTER TABLE board_comment AUTO_INCREMENT=1", 
+				"SET @CNT = 0", 
+				"UPDATE board_comment SET board_comment.num = @CNT:=@CNT+1",
+				"ALTER TABLE board_comment AUTO_INCREMENT="+(count+1), 
+				};
+		
+		for(int i = 0 ; i < 4 ; i++) {
+			pstmt = conn.prepareStatement(sqlList[i]);
+			pstmt.executeUpdate();
+		}
+	
+	} finally {
+		rs.close();
+	}
 }
 %>
+
+
