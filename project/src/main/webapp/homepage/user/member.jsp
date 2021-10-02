@@ -19,7 +19,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원관리</title>
+<title>영남인재교육원 : 회원관리</title>
 </head>
 <body style="text-align:center; background-color: #eee;">
 		<br>

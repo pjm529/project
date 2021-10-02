@@ -26,7 +26,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>영남인재교육원 : 회원관리</title>
 </head>
 
 <style>

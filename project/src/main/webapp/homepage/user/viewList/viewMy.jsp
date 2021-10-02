@@ -77,7 +77,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원 수정</title>
+<title>영남인재교육원 : 마이페이지</title>
 <link rel="stylesheet" href="../../css/signup.css">
 </head>
 
