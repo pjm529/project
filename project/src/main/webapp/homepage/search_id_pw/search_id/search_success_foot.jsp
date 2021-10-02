@@ -42,7 +42,7 @@
                 },
                 
                 "click": function() {
-                	alert("ㅇㅇ")
+                	window.location.href = '../search_pw/search_pw.jsp';
                 }
             });
         });
