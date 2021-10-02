@@ -18,46 +18,45 @@
 	</script>
 		
 <%	} else { 
-%>
-<%
-	if(writer_id.equals(sessId) || sessId.equals("admin")) {
-		String num = request.getParameter("num");
-		
-		// 1. JDBC 드라이버 로딩
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		
-		
-		try {
-			Context init = new InitialContext();
-		    DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/MySQL");
-		    conn = ds.getConnection();
+	
+		if(writer_id.equals(sessId) || sessId.equals("admin")) {
+			String num = request.getParameter("num");
+			
+			// 1. JDBC 드라이버 로딩
+			Connection conn = null;
+			PreparedStatement pstmt = null;
 			
 			
-			String sql = "delete from ad where num =" + num;
-			
-			// 3. PreparedStatement 생성
-			pstmt = conn.prepareStatement(sql);
-		
-			
-			// 4. 쿼리 실행
-			pstmt.executeUpdate();
-			
-			init(conn, pstmt); // 게시글번호 정렬
+			try {
+				Context init = new InitialContext();
+			    DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/MySQL");
+			    conn = ds.getConnection();
 				
-		} catch (SQLException e) {
-			System.out.println(e.getMessage());
-			e.printStackTrace();
-		} finally {
-			// 6. 사용한 pstmt 종료
-			pstmt.close();
-		
-			// 7. 커넥션 종료
-			conn.close();
-		} 
-		
-		response.sendRedirect("../ad.jsp");
-	} else {
+				
+				String sql = "delete from ad where num =" + num;
+				
+				// 3. PreparedStatement 생성
+				pstmt = conn.prepareStatement(sql);
+			
+				
+				// 4. 쿼리 실행
+				pstmt.executeUpdate();
+				
+				init(conn, pstmt); // 게시글번호 정렬
+					
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+				e.printStackTrace();
+			} finally {
+				// 6. 사용한 pstmt 종료
+				pstmt.close();
+			
+				// 7. 커넥션 종료
+				conn.close();
+			} 
+			
+			response.sendRedirect("../ad.jsp");
+		} else {
 %>
 	<script>
 		alert("비정상적인 접근입니다.");
