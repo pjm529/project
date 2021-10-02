@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-
+<% session.removeAttribute("search_id"); %>
 <!DOCTYPE html>
 <html>
 <head>

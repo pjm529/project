@@ -54,8 +54,7 @@
 <%
 	if(id!=null){
 		
-		session.setAttribute("search_id", id);
-		response.sendRedirect("search_success.jsp");
+		response.sendRedirect("search_success.jsp?id="+id);
 		
 	} else {
 		response.sendRedirect("search_fail.jsp");	

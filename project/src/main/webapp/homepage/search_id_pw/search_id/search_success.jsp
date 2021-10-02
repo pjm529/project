@@ -3,11 +3,11 @@
 
    
 <%
-	String sessId = (String) session.getAttribute("search_id");
+	String id = request.getParameter("id");
 %>
 
 <%
-	if(sessId == null) { 
+	if(id == null) { 
 %>
 	<script>
 	 		alert("비정상적인 접근입니다.");
@@ -46,7 +46,7 @@
 			
                
  				<span>
-       				<input id="id" name="id" type="text" value=<%=sessId %> readonly>
+       				<input id="id" name="id" type="text" value=<%=id %> readonly>
     			</span>
  
  
