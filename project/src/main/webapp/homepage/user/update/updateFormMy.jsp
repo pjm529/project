@@ -12,9 +12,7 @@
 	String sessId = (String) session.getAttribute("id"); 
 	String sessNum = (String) session.getAttribute("num");
 	String num = request.getParameter("num");
-%>
 
-<%
 	if(sessId == null) { 
 %>
 	<script>
@@ -24,63 +22,53 @@
 		
 <%	} else {
 		if(sessId.equals("admin")||sessNum.equals(num)) {
-%>
-
-<%
-	// 1. JDBC 드라이버 로딩
-	String id = null;
-	String pw = null;
-	String name = null;
-	String phone = null;
-	String email = null;
-	String email_domain = null;
-	String year = null;
-	String month = null;
-	String day = null;
-	String gender = null;
-	
-	
-	
-	Connection conn = null;
-	PreparedStatement pstmt = null;
-	ResultSet rs = null;
-	
-	try {
-		Context init = new InitialContext();
-	    DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/MySQL");
-	    conn = ds.getConnection();
-	
-		String sql = "select * from user where num=" + num;
-		
-		// 3. PreparedStatement 생성
-		pstmt = conn.prepareStatement(sql);
-	
-		// 4. 쿼리 실행
-		rs = pstmt.executeQuery();
-	
-		// 5. 쿼리 실행 결과 출력
-		if (rs.next()) {
-			id = rs.getString("id");
-			pw = rs.getString("pw");
-			name = rs.getString("name");
-			phone = rs.getString("phone");
-			email = rs.getString("email");
-			email_domain = rs.getString("email_domain");
-			year = rs.getString("year");
-			month = rs.getString("month");
-			day = rs.getString("day");
-			gender = rs.getString("gender");
-		}
-		
-		
-	} catch (SQLException e) {
-		System.out.println(e.getMessage());
-		e.printStackTrace();
-	} finally {
-		rs.close();
-		pstmt.close();
-		conn.close();
-	}
+			
+			String id = null;
+			String pw = null;
+			String name = null;
+			String phone = null;
+			String email = null;
+			String email_domain = null;
+			String year = null;
+			String month = null;
+			String day = null;
+			String gender = null;
+			
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+			try {
+				Context init = new InitialContext();
+			    DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/MySQL");
+			    conn = ds.getConnection();
+			
+				String sql = "select * from user where num=" + num;
+				
+				pstmt = conn.prepareStatement(sql);
+			
+				rs = pstmt.executeQuery();
+			
+				if (rs.next()) {
+					id = rs.getString("id");
+					pw = rs.getString("pw");
+					name = rs.getString("name");
+					phone = rs.getString("phone");
+					email = rs.getString("email");
+					email_domain = rs.getString("email_domain");
+					year = rs.getString("year");
+					month = rs.getString("month");
+					day = rs.getString("day");
+					gender = rs.getString("gender");
+				}
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+				e.printStackTrace();
+			} finally {
+				rs.close();
+				pstmt.close();
+				conn.close();
+			}
 %>
 <!DOCTYPE html>
 <html>
@@ -357,8 +345,6 @@
     <script>
         $(function () {
             hide(7);
-
-            
             // form에 있는 정보 받아오기
             let name = document.getElementById("name");
             let phone = document.getElementById("phone");
@@ -367,8 +353,6 @@
             let month = document.getElementById("month");
             let day = document.getElementById("day");
             let gender = document.getElementById("gender");
-
-         
 
             $("#update_btn").on({
                 "mouseover": function () {
@@ -379,7 +363,6 @@
                 }
             });
 
-            
             $("#update_btn").click(function () {
 				
             	if (pw.value == "" || (pw.value.length < 8 || pw.value.length > 17)) {
@@ -442,8 +425,6 @@
                         }
                     }
                 }
-            	
-                
             });
 
             $("#list_btn").click(function() {
@@ -461,7 +442,6 @@
     </script>		
 </body>
 </html>
-
 <%
 		} else {
 %>	

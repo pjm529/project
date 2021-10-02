@@ -8,10 +8,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%String sessId = (String) session.getAttribute("id"); %>
-<%String sessNum = (String) session.getAttribute("num"); %>
-
 <%
+	String sessId = (String) session.getAttribute("id"); 
+	String sessNum = (String) session.getAttribute("num");
+
 	if(sessId == null) { 
 %>
 	<script>
@@ -19,59 +19,56 @@
 	 		window.location.href = '../../index.jsp';
 	</script>
 		
-<%	} else {
+<%	
+	} else {
 
-	// 1. JDBC 드라이버 로딩
-	String num = sessNum;
-	String id = null;
-	String name = null;
-	String phone = null;
-	String email = null;
-	String email_domain = null;
-	String year = null;
-	String month = null;
-	String day = null;
-	String gender = null;
-	
-	Connection conn = null;
-	PreparedStatement pstmt = null;
-	ResultSet rs = null;
-	
-	try {
-		Context init = new InitialContext();
-	    DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/MySQL");
-	    conn = ds.getConnection();
-	
-		String sql = "select * from user where num=" + num;
+		String num = sessNum;
+		String id = null;
+		String name = null;
+		String phone = null;
+		String email = null;
+		String email_domain = null;
+		String year = null;
+		String month = null;
+		String day = null;
+		String gender = null;
 		
-		// 3. PreparedStatement 생성
-		pstmt = conn.prepareStatement(sql);
-	
-		// 4. 쿼리 실행
-		rs = pstmt.executeQuery();
-	
-		// 5. 쿼리 실행 결과 출력
-		if (rs.next()) {
-			id = rs.getString("id");
-			name = rs.getString("name");
-			phone = rs.getString("phone");
-			email = rs.getString("email");
-			email_domain = rs.getString("email_domain");
-			year = rs.getString("year");
-			month = rs.getString("month");
-			day = rs.getString("day");
-			gender = rs.getString("gender");
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			Context init = new InitialContext();
+		    DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/MySQL");
+		    conn = ds.getConnection();
+		
+			String sql = "select * from user where num=" + num;
+			
+			pstmt = conn.prepareStatement(sql);
+		
+			rs = pstmt.executeQuery();
+		
+			if (rs.next()) {
+				id = rs.getString("id");
+				name = rs.getString("name");
+				phone = rs.getString("phone");
+				email = rs.getString("email");
+				email_domain = rs.getString("email_domain");
+				year = rs.getString("year");
+				month = rs.getString("month");
+				day = rs.getString("day");
+				gender = rs.getString("gender");
+			}
+			
+			
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		} finally {
+			rs.close();
+			pstmt.close();
+			conn.close();
 		}
-		
-		
-	} catch (SQLException e) {
-		System.out.println(e.getMessage());
-		e.printStackTrace();
-	} finally {
-		rs.close();
-		pstmt.close();
-		conn.close();
-	}
 %>
 <!DOCTYPE html>
 <html>
@@ -84,9 +81,7 @@
 <body>
     <script src="../../js/jquery-3.6.0.min.js"></script>
 
-
     <div id="wrap">
-
 
         <div id="header">
             <a href="../../index.jsp"><img src="../../images/index/logo.png" id="logo"></a>
@@ -125,8 +120,6 @@
                         <span>
                             <input id="name" name="name" type="text" value=<%=name%> readonly>
                         </span>
-
-                        
 
                     </div>
                     
@@ -173,7 +166,6 @@
                         	<input id="day" name="day" type="text"
                         	value=<%=day %>일 style="width: 71px; height: 30px;" readonly>
                         </span>
-                        
        
                     </div>
 
@@ -203,7 +195,6 @@
 			<button type="submit" id="update_btn"><b>수정하기</b></button><br>
             <button type="submit" id="delete_btn"><b>탈퇴하기</b></button><br>
             
-
         </div>
 
         <div id="footer">
@@ -224,7 +215,6 @@
             let gender = document.getElementById("gender");
 
             let result;
-         
 
             $("#update_btn").on({
                 "mouseover": function () {
@@ -235,7 +225,6 @@
                 }
             });
 
-            
             $("#delete_btn").on({
                 "mouseover": function () {
                     $("#delete_btn").css({ "background-color": "rgb(105, 180, 255)" });
@@ -259,8 +248,6 @@
 	                $("form").attr("action", "../delete/deleteProcess.jsp").submit();
             	}
 			});
-            
-
         });
     </script>		
 </body>

@@ -10,7 +10,6 @@
 	pageEncoding="UTF-8"%>
 
 <%
-
 	String id = request.getParameter("id");
 	String pw = request.getParameter("pw");
 	String name = request.getParameter("name");
@@ -23,11 +22,7 @@
 	String gender = request.getParameter("gender");
 	
 	SHA256 hasing = new SHA256();
-	
 	String hashpw = SHA256.encodeSha256(pw);
-	
-	// 1. JDBC 드라이버 로딩
-	Class.forName("com.mysql.jdbc.Driver");
 	
 	Connection conn = null;
 	PreparedStatement pstmt = null;
@@ -39,7 +34,6 @@
 	
 		String sql = "insert into user (id, pw, name, phone, email, email_domain, year, month, day, gender) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	
-		// 3. PreparedStatement 생성
 		pstmt = conn.prepareStatement(sql);
 	
 		pstmt.setString(1, id);
@@ -53,7 +47,6 @@
 		pstmt.setString(9, day);
 		pstmt.setString(10, gender);
 	
-		// 4. 쿼리 실행
 		pstmt.executeUpdate();
 	
 	} catch (SQLException e) {

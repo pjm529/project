@@ -8,20 +8,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%String sessId = (String) session.getAttribute("id"); %>
-
 <%
+	String sessId = (String) session.getAttribute("id");
+
 	if(sessId == null) { 
 %>
 	<script>
 	 		alert("접근 권한이 없습니다.");
 	 		window.location.href = '../../index.jsp';
 	</script>
-		
-<%	} else {
+<%	
+	} else {
 		if(sessId.equals("admin")) {
 %>    
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,7 +50,6 @@
 		</tr>
 		
 		<%
-		
 			Connection conn = null;
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
@@ -63,13 +61,10 @@
 
 				String sql = "select * from user";
 				
-				// 3. PreparedStatement 생성
 				pstmt = conn.prepareStatement(sql);
 				
-				// 4. 쿼리 실행
 				rs = pstmt.executeQuery();
 				
-				// 5. 쿼리 실행 결과 출력
 				while(rs.next()) {
 		%>
 		<tr>

@@ -10,10 +10,8 @@
     pageEncoding="UTF-8"%>
 
 <%
-	// 1. JDBC 드라이버 로딩
 	StringBuffer idBuff = new StringBuffer();
 	int i = 0;
-	
 	
 	Connection conn = null;
 	PreparedStatement pstmt = null;
@@ -26,13 +24,10 @@
 	
 		String sql = "select id from user order by num";
 	
-		// 3. PreparedStatement 생성
 		pstmt = conn.prepareStatement(sql);
 	
-		// 4. 쿼리 실행
 		rs = pstmt.executeQuery();
 	
-		// 5. 쿼리 실행 결과 출력
 		while (rs.next()) {
 			idBuff.append(rs.getString("id"));
 			idBuff.append(",");
@@ -352,8 +347,6 @@
             let day = document.getElementById("day");
             let gender = document.getElementById("gender");
 
-         
-
             $("#btn").on({
                 "mouseover": function () {
                     $("#btn").css({ "background-color": "rgb(105, 180, 255)" });
@@ -451,7 +444,6 @@
             });
 
             function signup() {
-
                 // DB로 회원정보 보내기
                 alert("회원가입이 완료되었습니다.");
                 $("form").attr("action", "insertProcess.jsp").submit();
@@ -464,8 +456,6 @@
                     $(err_msg[i]).hide();
                 }
             }
-
-
         });
     </script>
 </body>

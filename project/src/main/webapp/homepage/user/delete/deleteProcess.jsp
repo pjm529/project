@@ -10,9 +10,8 @@
 <%
 	String sessId = (String) session.getAttribute("id");
 	String sessNum = (String) session.getAttribute("num");
-	String num = request.getParameter("num");%>
+	String num = request.getParameter("num");
 
-<%
 	if(sessId == null) { 
 %>
 	<script>
@@ -22,42 +21,45 @@
 		
 <%	} else {
 		if(sessId.equals("admin")||sessNum.equals(num)) {
-%>
-<%
-
 	
-	Connection conn = null;
-	PreparedStatement pstmt = null;
-	
-	
-	try {
-		Context init = new InitialContext();
-	    DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/MySQL");
-	    conn = ds.getConnection();
-		
-		String sql = "delete from user where num =" + num;
-		
-		// 3. PreparedStatement 생성
-		pstmt = conn.prepareStatement(sql);
-	
-		
-		// 4. 쿼리 실행
-		pstmt.executeUpdate();
-		
-		init(conn, pstmt); // 게시글번호 정렬
+			Connection conn = null;
+			PreparedStatement pstmt = null;
 			
-	} catch (SQLException e) {
-		System.out.println(e.getMessage());
-		e.printStackTrace();
-	}  finally {
-		pstmt.close();
-		conn.close();
-	}
-	
-	if(sessId.equals("admin")){
-		response.sendRedirect("../member.jsp");
-	} else {
-		response.sendRedirect("../../logProcess/logout.jsp");
+			
+			try {
+				Context init = new InitialContext();
+			    DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/MySQL");
+			    conn = ds.getConnection();
+				
+				String sql = "delete from user where num =" + num;
+				
+				pstmt = conn.prepareStatement(sql);
+			
+				pstmt.executeUpdate();
+				
+				init(conn, pstmt); // 게시글번호 정렬
+					
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+				e.printStackTrace();
+			}  finally {
+				pstmt.close();
+				conn.close();
+			}
+			
+			if(sessId.equals("admin")){
+				response.sendRedirect("../member.jsp");
+			} else {
+				response.sendRedirect("../../logProcess/logout.jsp");
+			}
+		} else {
+%>	
+		<script>
+	 		alert("접근 권한이 없습니다.");
+	 		window.location.href = '../../index.jsp';
+		</script>
+<%	
+		}
 	}
 %>
 
@@ -93,15 +95,4 @@ public void init(Connection conn, PreparedStatement pstmt) throws SQLException{
 		rs.close();
 	} 
 }
-%>
-<%
-		} else {
-%>	
-		<script>
-	 		alert("접근 권한이 없습니다.");
-	 		window.location.href = '../../index.jsp';
-		</script>
-<%	
-		}
-	}
 %>
