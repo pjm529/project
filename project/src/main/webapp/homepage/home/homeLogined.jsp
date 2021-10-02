@@ -10,7 +10,7 @@
 %>
 		<div id="logined">
 			<br>
-			<%=sessName%>님 안녕하세요
+			<b><%=sessName%></b>님 안녕하세요
 		</div>
 		
 		<div id="checkbox" style="margin-left: 27px;">
