@@ -34,10 +34,11 @@
 		<div id="checkbox">
 			<input type="checkbox" name="checkbox" <%=check %>>
 				<span style="font-size: 13px;"> ID 저장 
-				<a href="search_id_pw/search_id/search_id.jsp">아이디</a> / <a href="search_id_pw/search_pw/search_pw.jsp">비밀번호찾기</a> 
-				<a href="user/insert/insertForm.jsp">회원가입</a></span>
+				<a id="search_id" href="search_id_pw/search_id/search_id.jsp">아이디</a> / 
+				<a id="search_pw" href="search_id_pw/search_pw/search_pw.jsp">비밀번호찾기</a> 
+				<a id ="signup" href="user/insert/insertForm.jsp">회원가입</a></span>
 		</div>
-	</form>
+	</form>	
 </div> 
 
 

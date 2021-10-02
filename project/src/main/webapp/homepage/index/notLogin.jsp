@@ -106,6 +106,33 @@
    		 let pw = document.getElementById("pw");
    		 
    		 
+   		$("#search_id").on({
+            "mouseover": function () {
+                $("#search_id").css({ "font-weight": "bold" });
+            },
+            "mouseleave": function () {
+                $("#search_id").css({ "font-weight": "normal" });
+            }
+        });
+        
+   		$("#search_pw").on({
+            "mouseover": function () {
+                $("#search_pw").css({ "font-weight": "bold" });
+            },
+            "mouseleave": function () {
+                $("#search_pw").css({ "font-weight": "normal" });
+            }
+        });
+   		
+   		$("#signup").on({
+            "mouseover": function () {
+                $("#signup").css({ "font-weight": "bold" });
+            },
+            "mouseleave": function () {
+                $("#signup").css({ "font-weight": "normal" });
+            }
+        });
+   		
     	$("#loginbtn").click(function (){
     		if(id.value == "" || pw.value == ""){
     			alert("로그인 정보가 올바르지 않습니다.");
