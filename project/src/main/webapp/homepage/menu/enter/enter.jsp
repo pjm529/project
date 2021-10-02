@@ -89,12 +89,15 @@
 	                </tr>
 	
 	                <%
-					// 1. JDBC 드라이버 로딩
 			
 					Connection conn = null;
 					PreparedStatement pstmt = null;
+					PreparedStatement pstmt2 = null;
 					ResultSet rs = null;
+					ResultSet rs2 = null;
 				
+					String count=null;
+					
 					try{
 						
 						Context init = new InitialContext();		    
@@ -104,13 +107,24 @@
 						String sql = "select * from enter where " 
 								+ search_select + " like '%" + search_text + "%' order by num desc";
 						
-						// 3. PreparedStatement 생성
+						String sql2 = null;
+							
 						pstmt = conn.prepareStatement(sql);
-						// 4. 쿼리 실행
+
 						rs = pstmt.executeQuery();
 						
-						// 5. 쿼리 실행 결과 출력
 						while(rs.next()) {
+							
+							// comment 개수 출력
+							sql2 = "select count(*) as 'count' from enter_comment where enter_no="+rs.getString("num");
+							
+							pstmt2 = conn.prepareStatement(sql2);
+							
+							rs2 = pstmt2.executeQuery();
+							
+							if(rs2.next()) {
+								count = rs2.getString("count");
+							}
 					%>
 					<tr>
 					
@@ -124,7 +138,7 @@
 						<td>
 							<div class="hide" style="width: 700px">
 								<a href="viewList/view.jsp?num=<%=rs.getString("num")%>">
-									<%=rs.getString("title")%></a>
+									<%=rs.getString("title")%> [<%=count %>]</a>
 							</div>			
 						</td>
 						
