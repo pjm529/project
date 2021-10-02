@@ -14,7 +14,6 @@
 <hr>
 
 <%
-// 1. JDBC 드라이버 로딩
 	String num = null;
 	String title = null;
 
@@ -28,23 +27,18 @@
 		conn = ds.getConnection();
 
 		String sql = "select num, title from process order by num desc";
-		// 2. 데이터베이스 커넥션 생성
 
-		// 3. PreparedStatement 생성
 		pstmt = conn.prepareStatement(sql);
 
-		// 4. 쿼리 실행
 		rs = pstmt.executeQuery();
 
-		// 5. 쿼리 실행 결과 출력
 		while (rs.next() && i < 3) {
-	num = rs.getString("num");
-	title = rs.getString("title");
+			num = rs.getString("num");
+			title = rs.getString("title");
 %>
 			<div class="hide" style="width: 450px">
 				<span><a href="menu/process/viewList/viewProcess.jsp?num=<%=num %>">· <%=title %></a></span>
 			</div>
-			
 <%
 			i++;
 		}

@@ -5,9 +5,7 @@
 	String sessName = (String)session.getAttribute("name");
 	String sessId = (String)session.getAttribute("id");
 	String sessNum = (String)session.getAttribute("num");
-%>
 
-<% 
 	if(sessId.equals("admin")) { 
 %>
 		<div id="login">
