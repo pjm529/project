@@ -154,7 +154,7 @@
 			<div id="comment">
 				<form action="" method="post">
 					<input type="hidden" name="enter_no" value=<%=num%>> <b>댓글</b> [<%=count %>]<br>
-					<input id="comment_text" name="comment_text" type="text" maxlength="30" autocomplete="off">
+					<input id="comment_text" name="comment_text" type="text" maxlength="50" autocomplete="off">
 					<button id="add_comment_btn">
 						<b>댓글달기</b>
 					</button>
@@ -183,7 +183,7 @@
 						
 						<span> <b><%=rs.getString("writer")%></b>
 							<%=rs.getString("reg_date").substring(0, 16)%></span>
-						<button class="delete_comment_btn" style="border:none; background-color: white; color: red">x</button>	
+						<button class="delete_comment_btn">x</button>	
 							<br> 
 						<span><%=rs.getString("comment")%></span>
 						
