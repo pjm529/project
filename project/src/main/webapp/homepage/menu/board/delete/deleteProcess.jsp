@@ -17,56 +17,55 @@
 	 		window.location.href = '../../../index.jsp';
 	</script>
 		
-<%	} else { 
-%>
-<%
-	if(writer_id.equals(sessId) || sessId.equals("admin")) {
-		String num = request.getParameter("num");
-		
-		// 1. JDBC 드라이버 로딩
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		PreparedStatement pstmt2 = null;
-		
-		
-		try {
-			Context init = new InitialContext();
-		    DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/MySQL");
-		    conn = ds.getConnection();
+<%	
+	} else { 
+
+		if(writer_id.equals(sessId) || sessId.equals("admin")) {
+			String num = request.getParameter("num");
+			
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			PreparedStatement pstmt2 = null;
 			
 			
-			String sql = "delete from board where num =" + num;
-			String sql2 = "delete from board_comment where board_no =" + num;
-			
-			pstmt = conn.prepareStatement(sql);
-			pstmt2 = conn.prepareStatement(sql2);
-			
-			pstmt.executeUpdate();
-			pstmt2.executeUpdate();
-			
-			init(conn, pstmt); // 게시글번호 정렬
+			try {
+				Context init = new InitialContext();
+			    DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/MySQL");
+			    conn = ds.getConnection();
 				
-		} catch (SQLException e) {
-			System.out.println(e.getMessage());
-			e.printStackTrace();
-		} finally {
-			pstmt.close();
-			pstmt2.close();
-		
-			conn.close();
-		} 
-		
-		response.sendRedirect("../board.jsp");
-	} else {
+				
+				String sql = "delete from board where num =" + num;
+				String sql2 = "delete from board_comment where board_no =" + num;
+				
+				pstmt = conn.prepareStatement(sql);
+				pstmt2 = conn.prepareStatement(sql2);
+				
+				pstmt.executeUpdate();
+				pstmt2.executeUpdate();
+				
+				init(conn, pstmt); // 게시글번호 정렬
+					
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+				e.printStackTrace();
+			} finally {
+				pstmt.close();
+				pstmt2.close();
+			
+				conn.close();
+			} 
+			
+			response.sendRedirect("../board.jsp");
+		} else {
 %>
 	<script>
 		alert("비정상적인 접근입니다.");
 		window.location.href = '../../../index.jsp';
 	</script>
 <%		
-	}
+		}
 	
-}
+	}
 %>
 
 <%!	

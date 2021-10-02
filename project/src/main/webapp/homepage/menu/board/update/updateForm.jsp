@@ -26,15 +26,11 @@
 	    conn = ds.getConnection();
 	
 		String sql = "select * from board where num=" + num;
-		// 2. 데이터베이스 커넥션 생성
 	
-		// 3. PreparedStatement 생성
 		pstmt = conn.prepareStatement(sql);
 	
-		// 4. 쿼리 실행
 		rs = pstmt.executeQuery();
 	
-		// 5. 쿼리 실행 결과 출력
 		if (rs.next()) {
 			title = rs.getString("title");
 			content = rs.getString("content");
@@ -48,9 +44,7 @@
 		conn.close();
 		pstmt.close();
 	}
-%>
-
-<%
+	
 	String sessId= (String)session.getAttribute("id");
 	
 	if(sessId == null) { 
@@ -60,15 +54,16 @@
 	 		window.location.href = '../../../index.jsp';
 	</script>
 		
-<%	} else if (!sessId.equals(writer_id)){ 		
+<%	
+	} else if (!sessId.equals(writer_id)){ 		
 %>
 	<script>
 	 		alert("접근 권한이 없습니다.");
 	 		window.location.href = '../../../index.jsp';
 	</script>
-<%	} else {
+<%	
+	} else {
 %>
-	
 
 <!DOCTYPE html>
 <html>
@@ -169,8 +164,6 @@
             <jsp:include page="../../../footer.jsp"></jsp:include>
         </div>
     </div>
-
-    
 
 
     <script src="../../../js/jquery-3.6.0.min.js"></script>
