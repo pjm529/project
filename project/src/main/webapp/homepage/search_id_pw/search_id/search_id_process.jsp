@@ -54,17 +54,11 @@
 <%
 	if(id!=null){
 		
-%>
-	<jsp:include page="search_success.jsp"></jsp:include>
-	 <span>
-        <input id="id" name="id" type="text" value=<%=id %> readonly>
-    </span>
-    <jsp:include page="search_success_foot.jsp"></jsp:include>
-<%
+		session.setAttribute("search_id", id);
+		response.sendRedirect("search_success.jsp");
+		
 	} else {
-%>
-	<jsp:include page="search_fail.jsp"></jsp:include>
-<%		
+		response.sendRedirect("search_fail.jsp");	
 	}
 %>
 
