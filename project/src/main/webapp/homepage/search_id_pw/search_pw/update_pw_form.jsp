@@ -3,9 +3,6 @@
     
 <%
 	String sessId = (String) session.getAttribute("search_id");
-%>
-
-<%
 	if(sessId == null) { 
 %>
 	<script>
@@ -13,7 +10,8 @@
 	 		window.location.href = '../../index.jsp';
 	</script>
 		
-<%	} else {
+<%	
+	} else {
 %>
 <!DOCTYPE html>
 <html>

@@ -16,7 +16,6 @@
 	String email_domain = request.getParameter("email_domain");
 	Boolean success = false;
 	
-	// 1. JDBC 드라이버 로딩
 	
 	Connection conn = null;
 	PreparedStatement pstmt = null;
@@ -32,7 +31,6 @@
 		String sql = "select *, count(*) as 'count' from user where id = ? and name = ? and phone = ? " 
 				+"and email = ? and email_domain = ?";
 	
-		// 3. PreparedStatement 생성
 		pstmt = conn.prepareStatement(sql);
 	
 		pstmt.setString(1, id);
@@ -41,7 +39,6 @@
 		pstmt.setString(4, email);
 		pstmt.setString(5, email_domain);
 	
-		// 4. 쿼리 실행
 		rs = pstmt.executeQuery();
 		
 		if(rs.next()){

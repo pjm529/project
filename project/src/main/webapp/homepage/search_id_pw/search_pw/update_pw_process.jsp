@@ -18,7 +18,8 @@
 	 		window.location.href = '../../index.jsp';
 	</script>
 		
-<%	} else {
+<%	
+	} else {
 		String pw = request.getParameter("pw");
 		
 		SHA256 hasing = new SHA256();
@@ -34,13 +35,11 @@
 		
 			String sql = "update user set pw = ? where id = ?";
 		
-			// 3. PreparedStatement 생성
 			pstmt = conn.prepareStatement(sql);
 		
 			pstmt.setString(1, hashpw);
 			pstmt.setString(2, sessId);
 		
-			// 4. 쿼리 실행
 			pstmt.executeUpdate();
 		
 		} catch (SQLException e) {
@@ -60,7 +59,7 @@
 		
 
 <%
-}
+	}
 %>
 
 
