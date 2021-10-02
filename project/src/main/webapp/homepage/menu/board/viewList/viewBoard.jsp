@@ -136,35 +136,30 @@
             
             <div id="comment" style="margin-left: 250px;">
             	<form action="" method="post">
+            		<input type="hidden" name="num" value=<%=num %>>
                 	<b>댓글</b><br>
-            		<input type="text" style=" height:50px; width: 920px;"> <button style="height: 50px;"><b>댓글달기</b></button>
+            		<input id="commnet_text" name="comment_text" type="text" style=" height:50px; width: 920px;" maxlength="30">
+            		<button id="add_comment_btn" style="height: 50px;"><b>댓글달기</b></button>
             	</form>
             	
             	<br>
-            	
-            	
             	<%
-					// 1. JDBC 드라이버 로딩
-				
 					try{
 						
 						Context init = new InitialContext();		    
 					    DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/MySQL");  
 					    conn = ds.getConnection();
 		
-						String sql = "select * from comment order by num desc";
+						String sql = "select * from board_comment order by num desc";
 						
-						// 3. PreparedStatement 생성
 						pstmt = conn.prepareStatement(sql);
-						// 4. 쿼리 실행
 						rs = pstmt.executeQuery();
 						
-						// 5. 쿼리 실행 결과 출력
 						while(rs.next()) {
 					%>
-					
 					<div>
             			<form action="" method="post">
+            				<input type="hidden" name="num" value=<%=num %>>
             				<span>
             					<b><%=rs.getString("writer") %></b> <%=rs.getString("reg_date").substring(0, 16) %>
             				</span><br>
@@ -172,7 +167,6 @@
             			</form>
             			
             		</div><br>	
-					
 					<%			
 							}
 						} catch(SQLException e) {
@@ -184,12 +178,6 @@
 							pstmt.close();
 						}
 					%>
-            	<div>
-            		
-            		
-            		
-            		
-            	</div>	
             		
 			</div>
             
@@ -205,7 +193,8 @@
     <script src="../../../js/jquery-3.6.0.min.js"></script>
     <script>
         $(function () {
-
+	
+        	let nullid = "null";
         	let sessId = "<%=sessId%>";
         	let id = "<%=writer_id%>";
         	let result;
@@ -237,6 +226,17 @@
             $("#list_btn").click(function () {
             	window.location.href = '../board.jsp';
             });
+            
+            
+            $("#add_comment_btn").click(function() {
+            	if(sessId != nullid) {
+            		$("form").attr("onsubmit", "return true;");
+                    $("form").attr("action", "../../comment/board_comment/insertProcess.jsp").submit();
+            	} else {
+            		alert("로그인 후 이용하세요.");
+            	}
+            })
+            
         });
     </script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
