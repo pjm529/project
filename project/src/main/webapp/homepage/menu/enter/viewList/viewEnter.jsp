@@ -132,7 +132,63 @@
 
             </div>
             
-            
+            <br>
+			<hr style="width: 1000px;">
+
+			<div id="comment">
+				<form action="" method="post">
+					<input type="hidden" name="enter_no" value=<%=num%>> <b>댓글</b><br>
+					<input id="comment_text" name="comment_text" type="text" maxlength="30" autocomplete="off">
+					<button id="add_comment_btn" style="height: 50px;">
+						<b>댓글달기</b>
+					</button>
+				</form>
+
+				<br>
+				<%
+				try {
+
+					Context init = new InitialContext();
+					DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/MySQL");
+					conn = ds.getConnection();
+
+					String sql = "select * from enter_comment where enter_no = " + num + " order by reg_date desc";
+
+					pstmt = conn.prepareStatement(sql);
+					rs = pstmt.executeQuery();
+
+					while (rs.next()) {
+				%>
+				<div>
+					<form action="" method="post">
+						<input type="hidden" name="enter_no" value=<%=num%>> 
+						<input type="hidden" name="num" value=<%=rs.getString("num")%>>
+						<input type="hidden" name="comment_writer_id" value=<%=rs.getString("writer_id")%>> 
+						
+						<span> <b><%=rs.getString("writer")%></b>
+							<%=rs.getString("reg_date").substring(0, 16)%></span>
+							<br> 
+						<span><%=rs.getString("comment")%></span>
+						
+						<button class="delete_comment_btn" style="border: 1px;">x</button>
+					</form>
+
+				</div>
+				<br>
+				<%
+					}
+				} catch (SQLException e) {
+					System.out.println(e.getMessage());
+					e.printStackTrace();
+				} finally {
+					rs.close();
+					conn.close();
+					pstmt.close();
+				}
+				%>
+
+			</div>
+			
         </div>
 
         <br>
@@ -146,9 +202,11 @@
     <script>
         $(function () {
 
+        	let nullid = "null";
         	let sessId = "<%=sessId%>";
         	let id = "<%=writer_id%>";
         	let result;
+			let comment_text = document.getElementById("comment_text");
         	
             $("#update_btn").click(function () {
             	if(sessId == id) {
@@ -177,6 +235,39 @@
             $("#list_btn").click(function () {
             	window.location.href = '../enter.jsp';
             });
+            
+            $("#add_comment_btn").click(function() {
+				if (sessId != nullid) {
+					if(comment_text.value == "") {
+						alert("내용을 입력하세요.");
+					} else {
+						if(sessId == "admin") {
+							$("form").attr("onsubmit", "return true;");
+							$("form").attr("action","../../comment/enter_comment/insertProcess.jsp").submit();
+						} else {
+							alert("관리자만 이용할 수 있습니다.");
+						}
+						
+					}
+				} else {
+					alert("로그인 후 이용하세요.");
+				}
+			});
+
+			$(".delete_comment_btn").click(function() {
+				
+				result = confirm("댓글을 삭제하시겠습니까?");
+				
+				if(result) {
+					if(sessId == "admin") {
+						$("form").attr("onsubmit", "return true;");
+						$("form").attr("action","../../comment/enter_comment/deleteProcess.jsp").submit();
+					} else {
+						alert("관리자만 이용할 수 있습니다.");
+					}
+				}
+				
+			});
         });
     </script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
