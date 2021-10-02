@@ -188,10 +188,11 @@
 						
 						<span> <b><%=rs.getString("writer")%></b>
 							<%=rs.getString("reg_date").substring(0, 16)%></span>
-							<br> 
+						<button class="delete_comment_btn" style="border:none; background-color: white; color: red">x</button>
+						<br> 
 						<span><%=rs.getString("comment")%></span>
 						
-						<button class="delete_comment_btn" style="border: 1px;">x</button>
+						
 					</form>
 
 				</div>
@@ -229,6 +230,8 @@
 			let result;
 			let comment_text = document.getElementById("comment_text");
 			
+			
+			
 			$("#update_btn").click(function() {
 				if (sessId == id) {
 						$("form").attr("onsubmit", "return true;");
@@ -238,6 +241,7 @@
 				}
 			});
 
+			
 			$("#delete_btn").click(function() {
 				if (sessId == id || sessId == "admin") {
 					result = confirm("게시글을 삭제하시겠습니까?");
@@ -274,7 +278,6 @@
 				result = confirm("댓글을 삭제하시겠습니까?");
 				
 				if(result) {
-					
 					$("form").attr("onsubmit", "return true;");
 					$("form").attr("action","../../comment/board_comment/deleteProcess.jsp").submit();
 				}

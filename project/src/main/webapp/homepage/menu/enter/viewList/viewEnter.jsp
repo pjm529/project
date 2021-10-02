@@ -183,10 +183,10 @@
 						
 						<span> <b><%=rs.getString("writer")%></b>
 							<%=rs.getString("reg_date").substring(0, 16)%></span>
+						<button class="delete_comment_btn" style="border:none; background-color: white; color: red">x</button>	
 							<br> 
 						<span><%=rs.getString("comment")%></span>
 						
-						<button class="delete_comment_btn" style="border: 1px;">x</button>
 					</form>
 
 				</div>
