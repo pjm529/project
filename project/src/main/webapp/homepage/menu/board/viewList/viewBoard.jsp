@@ -126,9 +126,35 @@
                     </div>
 
                 </form>
-
+                
+                
+			
             </div>
+            <br>
+            <hr style="width: 1000px;">
             
+            <div id="comment" style="margin-left: 250px;">
+            	<form action="" method="post">
+                	<b>댓글</b><br>
+            		<input type="text" style=" height:50px; width: 920px;"> <button style="height: 50px;"><b>댓글달기</b></button>
+            	</form>
+            	
+            	<br>
+            	
+            	<div>
+            		
+            		<div>
+            			<form action="" method="post">
+            				<span><b>작성자</b> 작성일시</span><br>
+            			<span >ㅁㄴㅇㄻㄴㅇㄹ ㅇㅇㅇ ㄴㄴㄴ</span> <button style="border: 1px; solid black">x</button> 
+            			</form>
+            			
+            		</div><br>
+            		
+            		
+            	</div>	
+            		
+			</div>
             
         </div>
 
