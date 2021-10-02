@@ -39,7 +39,7 @@
 
             <div>
                 <div>
-                    <h2>게시글</h2>
+                    <h2>게시판</h2>
                 </div>
                 <hr id="noticehr">
                 <div>
