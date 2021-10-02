@@ -17,5 +17,6 @@
 </div>
 
 <span class="search"> 
-		<a href="#">아이디</a> / <a href="#">비밀번호찾기</a> <a href="user/insert/insertForm.jsp">회원가입</a>
+		<a href="search_id_pw/search_id/search_id.jsp">아이디</a> / <a href="search_id_pw/search_pw/search_pw.jsp">비밀번호찾기</a> 
+		<a href="user/insert/insertForm.jsp">회원가입</a>
 </span>
