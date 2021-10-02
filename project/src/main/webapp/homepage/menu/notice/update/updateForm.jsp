@@ -8,9 +8,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" session="true"%>
     
-<%String sessId = (String) session.getAttribute("id"); %>
-
 <%
+	String sessId = (String) session.getAttribute("id"); 
+
 	if(sessId == null) { 
 %>
 	<script>
@@ -18,47 +18,41 @@
 	 		window.location.href = '../../../index.jsp';
 	</script>
 		
-<%	} else {
+<%	
+	} else {
 		if(sessId.equals("admin")) {
-%>
-<%
-	// 1. JDBC 드라이버 로딩
-	String num = request.getParameter("num");
-	String title = null;
-	String content = null;
-	String writer = (String)session.getAttribute("name");
-	
-	Connection conn = null;
-	PreparedStatement pstmt = null;
-	ResultSet rs = null;
-	
-	try {
-		Context init = new InitialContext();
-	    DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/MySQL");
-	    conn = ds.getConnection();
-	
-		String sql = "select * from notice where num=" + num;
-		// 2. 데이터베이스 커넥션 생성
-	
-		// 3. PreparedStatement 생성
-		pstmt = conn.prepareStatement(sql);
-	
-		// 4. 쿼리 실행
-		rs = pstmt.executeQuery();
-	
-		// 5. 쿼리 실행 결과 출력
-		if (rs.next()) {
-			title = rs.getString("title");
-			content = rs.getString("content");
-		}
-	} catch (SQLException e) {
-		System.out.println(e.getMessage());
-		e.printStackTrace();
-	}  finally{
-		rs.close();
-		conn.close();
-		pstmt.close();
-	}
+
+			String num = request.getParameter("num");
+			String title = null;
+			String content = null;
+			String writer = (String)session.getAttribute("name");
+			
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+			try {
+				Context init = new InitialContext();
+			    DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/MySQL");
+			    conn = ds.getConnection();
+			
+				String sql = "select * from notice where num=" + num;
+				pstmt = conn.prepareStatement(sql);
+			
+				rs = pstmt.executeQuery();
+			
+				if (rs.next()) {
+					title = rs.getString("title");
+					content = rs.getString("content");
+				}
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+				e.printStackTrace();
+			}  finally{
+				rs.close();
+				conn.close();
+				pstmt.close();
+			}
 %>
 <!DOCTYPE html>
 <html>
@@ -158,9 +152,6 @@
             <jsp:include page="../../../footer.jsp"></jsp:include>
         </div>
     </div>
-
-    
-
 
     <script src="../../../js/jquery-3.6.0.min.js"></script>
     <script>
