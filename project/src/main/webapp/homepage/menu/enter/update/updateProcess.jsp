@@ -18,56 +18,47 @@
 	 		window.location.href = '../../../index.jsp';
 	</script>
 		
-<%	} else if (!sessId.equals(writer_id)){ 		
+<%	
+	} else if (!sessId.equals(writer_id)){ 		
 %>
 	<script>
 	 		alert("접근 권한이 없습니다.");
 	 		window.location.href = '../../../index.jsp';
 	</script>
-<%	} else {
-%>
-<%
-	String num = request.getParameter("num");
-	String title = request.getParameter("title");
-	String content = request.getParameter("content");
-	String writer = request.getParameter("writer");
-	
-	// 1. JDBC 드라이버 로딩
-	
-	Connection conn = null;
-	PreparedStatement pstmt = null;
-	
-	try {
-		Context init = new InitialContext();
-	    DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/MySQL");
-	    conn = ds.getConnection();
-	
-		String sql = "update enter set title = ?, content = ?, writer = ?, "
-				+ "reg_date = current_timestamp where num =" + num;
-	
-		// 3. PreparedStatement 생성
-		pstmt = conn.prepareStatement(sql);
-	
-		pstmt.setString(1, title);
-		pstmt.setString(2, content);
-		pstmt.setString(3, writer);
-	
-	
-		// 4. 쿼리 실행
-		pstmt.executeUpdate();
-	
-	} catch (SQLException e) {
-		System.out.println(e.getMessage());
-		e.printStackTrace();
-	} finally {
-		// 6. 사용한 pstmt 종료
-		pstmt.close();
-	
-		// 7. 커넥션 종료
-		conn.close();
+<%	
+	} else {
+		String num = request.getParameter("num");
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+		String writer = request.getParameter("writer");
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			Context init = new InitialContext();
+		    DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/MySQL");
+		    conn = ds.getConnection();
+		
+			String sql = "update enter set title = ?, content = ?, writer = ?, "
+					+ "reg_date = current_timestamp where num =" + num;
+		
+			pstmt = conn.prepareStatement(sql);
+		
+			pstmt.setString(1, title);
+			pstmt.setString(2, content);
+			pstmt.setString(3, writer);
+		
+			pstmt.executeUpdate();
+		
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		} finally {
+			pstmt.close();
+			conn.close();
+		}
+		response.sendRedirect("../viewList/viewEnter.jsp?num=" + num);
 	}
-	
-	response.sendRedirect("../viewList/viewEnter.jsp?num="+num);
-}
 %>
 

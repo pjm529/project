@@ -5,21 +5,24 @@
 <%
 	String num = request.getParameter("num");
 	String sessId = (String)session.getAttribute("id");
+	
 	if(num == null) { 
 %>
 		<script>
 		 		alert("비정상적인 접근입니다.");
 		 		window.location.href = '../../../index.jsp';
 		</script>
-<% 	} else if(sessId == null) {
+<% 	
+	} else if(sessId == null) {
 %>
 	<script>
 		alert("로그인 후 이용해주세요.");
 		window.location.href = '../../../index.jsp';
 	</script>
-<%	} else if(sessId.equals("admin")) {
+<%	
+	} else if(sessId.equals("admin")) {
 		session.setAttribute("pw_text", "1");
-		response.sendRedirect("viewEnter.jsp?num="+num);
+		response.sendRedirect("viewEnter.jsp?num=" + num);
 	} else {
 %>
 
@@ -64,14 +67,10 @@
             <jsp:include page="../../../footer.jsp"></jsp:include>
         </div>
     </div>
-
     
-
-
     <script src="../../../js/jquery-3.6.0.min.js"></script>
     <script>
 		$(function () {
-			let pw_text = document.getElementById("pw_text");	
             
             $("#pw_btn").on({ 
                 "mouseover": function () {
@@ -88,7 +87,6 @@
                 }
             });
             
-			
 			$("#list_btn").click(function() {
 				 window.location.href = '../enter.jsp';
 			});
@@ -107,5 +105,5 @@
 
 </html>
 <%
-}
+	}
 %>

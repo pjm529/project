@@ -8,8 +8,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<% String sessId = (String)session.getAttribute("id"); %>
-<%
+<% 
+	String sessId = (String)session.getAttribute("id"); 
 	String search_text = request.getParameter("search_text");
 	String search_select = request.getParameter("search_select");
 
@@ -49,7 +49,6 @@
         		<br>
         	</div>
         	
-        	
         	<div id="search">
         		<form action="enter.jsp" method="get">
 	        		<table>
@@ -71,7 +70,6 @@
 	        				<td>
 	        					<button type="submit" id="search_btn"><b>검색</b></button>
 	        				</td>
-	        				
 	        			</tr>
 	        		</table>
         		</form>
@@ -170,7 +168,6 @@
 						}
 					%>
 	
-	                
 			    </table>
 			    
 				<br>
@@ -187,7 +184,6 @@
 		
 		<div id="footer">
 		    <jsp:include page="../../footer.jsp"></jsp:include>
-		
 		</div>
 		
 	</div>
@@ -201,7 +197,6 @@
 	        "mouseleave": function () {
 	            $("#search_btn").css({ "background-color": "rgb(155, 205, 255)" });
 	        }
-	      
 	    });
 
         $(function () {

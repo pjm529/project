@@ -21,29 +21,24 @@
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		
 		try {
 			Context init = new InitialContext();
 		    DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/MySQL");
 		    conn = ds.getConnection();
 		
 			String sql = "select pw from enter where num=" + num;
-			// 2. 데이터베이스 커넥션 생성
 		
-			// 3. PreparedStatement 생성
 			pstmt = conn.prepareStatement(sql);
 		
-			// 4. 쿼리 실행
 			rs = pstmt.executeQuery();
 		
-			// 5. 쿼리 실행 결과 출력
 			if (rs.next()) {
 				pw = rs.getString("pw");
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
-		}  finally{
+		} finally{
 			rs.close();
 			conn.close();
 			pstmt.close();
@@ -51,12 +46,14 @@
 		
 		if(hashpw.equals(pw)) {
 			session.setAttribute("pw_text", hashpw);
-			response.sendRedirect("viewEnter.jsp?num="+num);
+			response.sendRedirect("viewEnter.jsp?num=" + num);
 			
 		} else {
 %>
 			<script>
 				alert("비밀번호가 올바르지 않습니다.");
-				window.location.href = 'view.jsp?num='+<%=num%>;
+				window.location.href = 'view.jsp?num=' + <%=num%>;
 			</script>							
-<%	}%>
+<%	
+		}
+%>

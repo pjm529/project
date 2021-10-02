@@ -16,56 +16,53 @@
 	 		alert("접근 권한이 없습니다.");
 	 		window.location.href = '../../../index.jsp';
 	</script>
-		
-<%	} else { 
-%>
-<%
-	if(writer_id.equals(sessId) || sessId.equals("admin")) {
-		String num = request.getParameter("num");
-		
-		// 1. JDBC 드라이버 로딩
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		PreparedStatement pstmt2 = null;
-		
-		try {
-			Context init = new InitialContext();
-		    DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/MySQL");
-		    conn = ds.getConnection();
+<%	
+	} else { 
+
+		if(writer_id.equals(sessId) || sessId.equals("admin")) {
 			
+			String num = request.getParameter("num");
 			
-			String sql = "delete from enter where num =" + num;
-			String sql2 = "delete from enter_comment where enter_no =" + num;
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			PreparedStatement pstmt2 = null;
 			
-			pstmt = conn.prepareStatement(sql);
-			pstmt2 = conn.prepareStatement(sql2);
-			
-			pstmt.executeUpdate();
-			pstmt2.executeUpdate();
-			
-			init(conn, pstmt); // 게시글번호 정렬
+			try {
+				Context init = new InitialContext();
+			    DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/MySQL");
+			    conn = ds.getConnection();
 				
-		} catch (SQLException e) {
-			System.out.println(e.getMessage());
-			e.printStackTrace();
-		} finally {
-			pstmt.close();
-			pstmt2.close();
-		
-			conn.close();
-		} 
-		
-		response.sendRedirect("../enter.jsp");
-	} else {
+				String sql = "delete from enter where num =" + num;
+				String sql2 = "delete from enter_comment where enter_no =" + num;
+				
+				pstmt = conn.prepareStatement(sql);
+				pstmt2 = conn.prepareStatement(sql2);
+				
+				pstmt.executeUpdate();
+				pstmt2.executeUpdate();
+				
+				init(conn, pstmt); // 게시글번호 정렬
+					
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+				e.printStackTrace();
+			} finally {
+				pstmt.close();
+				pstmt2.close();
+			
+				conn.close();
+			} 
+			response.sendRedirect("../enter.jsp");
+		} else {
 %>
-	<script>
-		alert("비정상적인 접근입니다.");
-		window.location.href = '../../../index.jsp';
-	</script>
+		<script>
+			alert("비정상적인 접근입니다.");
+			window.location.href = '../../../index.jsp';
+		</script>
 <%		
+		}
+		
 	}
-	
-}
 %>
 
 <%!	
@@ -89,7 +86,7 @@ public void init(Connection conn, PreparedStatement pstmt) throws SQLException{
 				"ALTER TABLE enter AUTO_INCREMENT=1", 
 				"SET @CNT = 0", 
 				"UPDATE enter SET enter.num = @CNT:=@CNT+1",
-				"ALTER TABLE enter AUTO_INCREMENT="+(count+1), 
+				"ALTER TABLE enter AUTO_INCREMENT=" + (count + 1), 
 				};
 		
 		for(int i = 0 ; i < 4 ; i++) {
@@ -113,7 +110,7 @@ public void init(Connection conn, PreparedStatement pstmt) throws SQLException{
 				"ALTER TABLE enter_comment AUTO_INCREMENT=1", 
 				"SET @CNT = 0", 
 				"UPDATE enter_comment SET enter_comment.num = @CNT:=@CNT+1",
-				"ALTER TABLE enter_comment AUTO_INCREMENT="+(count+1), 
+				"ALTER TABLE enter_comment AUTO_INCREMENT=" + (count + 1), 
 				};
 		
 		for(int i = 0 ; i < 4 ; i++) {

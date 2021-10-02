@@ -22,7 +22,8 @@
 		 		window.location.href = '../../../index.jsp';
 		</script>
 		
-<%	} else if(!(num == null || pw_text == null) || sessId.equals("admin")){
+<%	
+	} else if(!(num == null || pw_text == null) || sessId.equals("admin")){
 		
 		String title = null;
 		String content = null;
@@ -51,7 +52,7 @@
 		
 			if (rs.next()) {
 				
-				sql2 = "select count(*) as 'count' from enter_comment where enter_no="+rs.getString("num");
+				sql2 = "select count(*) as 'count' from enter_comment where enter_no=" + rs.getString("num");
 				
 				pstmt2 = conn.prepareStatement(sql2);
 				
@@ -60,7 +61,6 @@
 				if(rs2.next()) {
 					count = rs2.getString("count");
 				}
-				
 				title = rs.getString("title");
 				content = rs.getString("content");
 				writer = rs.getString("writer");
@@ -210,7 +210,6 @@
         <br>
         <div id="footer">
             <jsp:include page="../../../footer.jsp"></jsp:include>
-
         </div>
 
     </div>
@@ -263,7 +262,6 @@
 						} else {
 							alert("관리자만 이용할 수 있습니다.");
 						}
-						
 					}
 				} else {
 					alert("로그인 후 이용하세요.");
@@ -298,11 +296,13 @@
 </body>
 
 </html>
-<% } else {		
+<% 
+		} else {		
 %> 
 		<script>
 			alert("비정상적인 접근입니다.");
 			window.location.href = '../../../index.jsp';
 		</script>
-<%	}
-}%>
+<%		}
+	}
+%>
