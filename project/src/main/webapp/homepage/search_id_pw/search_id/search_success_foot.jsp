@@ -29,7 +29,7 @@
                 },
                 
                 "click": function() {
-                	alert("ㅇㅇ")
+                	window.location.href = '../../index.jsp';
                 }
             });
 
