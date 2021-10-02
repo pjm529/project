@@ -75,11 +75,11 @@
 </head>
 <body>
 
-	<form action="" post="post">
+	<form action="" method="post">
 		<input type="hidden" id="id" name="id">
 		<input type="hidden" id="name" name="name">
 		<input type="hidden" id="num" name="num">
-		<input type="hidden" id="checkbox" name="checkbox" value="<%=checkbox %>">
+		<input type="hidden" id="checkbox" name="checkbox">
 	</form>
 		
 	 <script src="../js/jquery-3.6.0.min.js"></script>
@@ -101,11 +101,12 @@
 	    
 	    let input_id = "<%=id%>";
         let input_pw = "<%=hashpw%>";  
-        
+        let input_checkbox = "<%=checkbox%>";
         
         let name = document.getElementById("name");
         let num = document.getElementById("num");
         let id = document.getElementById("id");
+        let checkbox = document.getElementById("checkbox");
         
     	
     	index = $.inArray(input_id, id_arr);
@@ -118,6 +119,7 @@
             	id.value = input_id;
             	name.value = name_arr[index];
             	num.value = num_arr[index];
+            	checkbox.value = input_checkbox;
             	$("form").attr("action", "loginSuccess.jsp").submit();
             } else {
             	alert("로그인정보가 올바르지 않습니다.");
