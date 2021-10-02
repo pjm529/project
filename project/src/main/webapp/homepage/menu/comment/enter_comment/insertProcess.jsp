@@ -27,7 +27,7 @@
 	String comment = request.getParameter("comment_text");
 	String enter_no = request.getParameter("enter_no");
 
-	if(comment != null && enter_no != null) {
+	if(sessId.equals("admin") && comment != null && enter_no != null) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		
