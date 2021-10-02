@@ -12,9 +12,7 @@
 	String num = request.getParameter("num");
 	String comment_writer_id = request.getParameter("comment_writer_id");
 	String enter_no = request.getParameter("enter_no");
-%>
 
-<%
 	if(sessId == null) { 
 %>
 	<script>
@@ -22,45 +20,48 @@
 	 		window.location.href = '../../../index.jsp';
 	</script>
 		
-<%	} else {
+<%	
+	} else {
 		if(sessId.equals("admin") || sessId.equals(comment_writer_id)) {
-%>
-<%
-
 	
-	Connection conn = null;
-	PreparedStatement pstmt = null;
-	
-	
-	try {
-		Context init = new InitialContext();
-	    DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/MySQL");
-	    conn = ds.getConnection();
-		
-		String sql = "delete from enter_comment where num =" + num;
-		
-		// 3. PreparedStatement 생성
-		pstmt = conn.prepareStatement(sql);
-	
-		
-		// 4. 쿼리 실행
-		pstmt.executeUpdate();
-		
-		init(conn, pstmt); // 게시글번호 정렬
+			Connection conn = null;
+			PreparedStatement pstmt = null;
 			
-	} catch (SQLException e) {
-		System.out.println(e.getMessage());
-		e.printStackTrace();
-	}  finally {
-		pstmt.close();
-		conn.close();
-	}
+			try {
+				Context init = new InitialContext();
+			    DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/MySQL");
+			    conn = ds.getConnection();
+				
+				String sql = "delete from enter_comment where num =" + num;
+				
+				pstmt = conn.prepareStatement(sql);
+			
+				pstmt.executeUpdate();
+				
+				init(conn, pstmt); // 게시글번호 정렬
+					
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+				e.printStackTrace();
+			}  finally {
+				pstmt.close();
+				conn.close();
+			}
 %>
-	<script>
-	 	alert("삭제가 완료되었습니다.");
-	 	window.location.href = '../../enter/viewList/viewEnter.jsp?num=<%=enter_no%>';
-	</script>
+		<script>
+		 	alert("삭제가 완료되었습니다.");
+		 	window.location.href = '../../enter/viewList/viewEnter.jsp?num=<%=enter_no%>';
+		</script>
 <%
+		} else {
+%>	
+		<script>
+	 		alert("댓글의 작성자가 아닙니다.");
+	 		window.location.href = '../../enter/viewList/viewEnter.jsp?num=<%=enter_no%>';
+		</script>
+<%		
+		}
+	}
 %>
 
 <%!	
@@ -96,14 +97,4 @@ public void init(Connection conn, PreparedStatement pstmt) throws SQLException{
 	} 
 }
 %>
-<%
-		} else {
-%>	
-		<script>
-	 		alert("댓글의 작성자가 아닙니다.");
-	 		window.location.href = '../../enter/viewList/viewEnter.jsp?num=<%=enter_no%>';
-		</script>
-<%		
-		}
-	}
-%>
+
