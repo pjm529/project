@@ -2,6 +2,7 @@
     pageEncoding="UTF-8" session="true"%>
 <%
 	String sessId =(String) session.getAttribute("id");
+	session.removeAttribute("search_id");
 	if(sessId == null) {
 %>
 		<jsp:forward page="index/notLogin.jsp"></jsp:forward>
