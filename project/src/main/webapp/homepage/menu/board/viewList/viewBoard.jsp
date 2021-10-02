@@ -150,7 +150,7 @@
 					    DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/MySQL");  
 					    conn = ds.getConnection();
 		
-						String sql = "select * from board_comment order by num desc";
+						String sql = "select * from board_comment where board_no = " + num + " order by reg_date desc";
 						
 						pstmt = conn.prepareStatement(sql);
 						rs = pstmt.executeQuery();
