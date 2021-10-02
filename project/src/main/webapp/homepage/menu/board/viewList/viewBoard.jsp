@@ -143,11 +143,10 @@ try {
 			<br>
 			<hr style="width: 1000px;">
 
-			<div id="comment" style="margin-left: 250px;">
+			<div id="comment">
 				<form action="" method="post">
 					<input type="hidden" name="board_no" value=<%=num%>> <b>댓글</b><br>
-					<input id="comment_text" name="comment_text" type="text"
-						style="height: 50px; width: 920px;" maxlength="30" autocomplete="off">
+					<input id="comment_text" name="comment_text" type="text" maxlength="30" autocomplete="off">
 					<button id="add_comment_btn" style="height: 50px;">
 						<b>댓글달기</b>
 					</button>

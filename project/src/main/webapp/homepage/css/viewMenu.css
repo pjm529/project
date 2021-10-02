@@ -116,3 +116,12 @@ table {
 	text-align: center;
 	width: 1500px;
 }
+
+#comment{
+	margin-left: 250px;
+}
+
+#comment_text{
+	height: 50px; 
+	width: 920px;
+}
