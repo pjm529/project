@@ -4,13 +4,15 @@
 <%
 	String cookie = "";
 	Cookie[] cookies = request.getCookies();
-	
+	String check ="";
+
 	if (cookies != null && cookies.length > 0) {
 
 		for (int i = 0; i < cookies.length; i++) {
 
 			if (cookies[i].getName().equals("userId")) {
 				cookie = cookies[i].getValue();
+				check = "checked";
 			}
 		}
 	}
@@ -29,14 +31,14 @@
 		
 		<button id="loginbtn" class="btn btn-secondary btn">로그인</button>
 		
+		<div id="checkbox">
+			<input type="checkbox" name="checkbox" <%=check %>>
+				<span style="font-size: 13px;"> ID 저장 
+				<a href="search_id_pw/search_id/search_id.jsp">아이디</a> / <a href="search_id_pw/search_pw/search_pw.jsp">비밀번호찾기</a> 
+				<a href="user/insert/insertForm.jsp">회원가입</a></span>
+		</div>
 	</form>
-</div>
+</div> 
 
-<span class="search"> 
-		<a href="search_id_pw/search_id/search_id.jsp">아이디</a> / <a href="search_id_pw/search_pw/search_pw.jsp">비밀번호찾기</a> 
-		<a href="user/insert/insertForm.jsp">회원가입</a>
-</span><br>
 
-<div id="checkbox">
-	<input type="checkbox" name="checkbox"><span style="font-size: 13px;"> ID 저장</span> <br>
-</div>
+

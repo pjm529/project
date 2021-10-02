@@ -136,7 +136,8 @@ hr{
 
 #sidebar{
     position: absolute;
-    padding: 18px;
+    padding-top: 20px;
+    padding-left: 5px;
     border: 1px solid #d4d4d4;
     width: 275px;
     height: 120px;
@@ -154,30 +155,22 @@ hr{
     height: 60px;
 }
 
-.search{
-    margin-left: 10px;
-    top: 1px;
-}
 
-.search a{
+#checkbox a{
     text-decoration: none;
     color:black;
     font-size: 13px;
 }
 
-#checkbox{
-	margin-left: 10px;
-    top: 0;
-}
 .user_id{
-    width: 150px;
+    width: 170px;
     border-radius: 5px;
     border: 1px solid black;
 
 }
 
 .user_pw{
-    width: 150px;
+    width: 170px;
     border-radius: 5px;
     border: 1px solid black;
 }
