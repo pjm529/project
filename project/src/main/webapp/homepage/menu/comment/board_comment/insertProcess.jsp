@@ -11,7 +11,7 @@
 	String writer_id = (String)session.getAttribute("id");
 	String writer = (String)session.getAttribute("name");
 	String comment = request.getParameter("comment_text");
-	String board_no = request.getParameter("num");
+	String board_no = request.getParameter("board_no");
 	
 	// 1. JDBC 드라이버 로딩
 	Class.forName("com.mysql.jdbc.Driver");
