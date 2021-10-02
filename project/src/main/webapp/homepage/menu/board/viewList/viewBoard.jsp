@@ -9,6 +9,7 @@
     pageEncoding="UTF-8"%>
 
 <%
+	String ssesId = (String)session.getAttribute("id");
 	String num = request.getParameter("num");
 	if(num == null) { 
 %>
@@ -141,15 +142,51 @@
             	
             	<br>
             	
-            	<div>
-            		
-            		<div>
+            	
+            	<%
+					// 1. JDBC 드라이버 로딩
+				
+					try{
+						
+						Context init = new InitialContext();		    
+					    DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/MySQL");  
+					    conn = ds.getConnection();
+		
+						String sql = "select * from comment order by num desc";
+						
+						// 3. PreparedStatement 생성
+						pstmt = conn.prepareStatement(sql);
+						// 4. 쿼리 실행
+						rs = pstmt.executeQuery();
+						
+						// 5. 쿼리 실행 결과 출력
+						while(rs.next()) {
+					%>
+					
+					<div>
             			<form action="" method="post">
-            				<span><b>작성자</b> 작성일시</span><br>
-            			<span >ㅁㄴㅇㄻㄴㅇㄹ ㅇㅇㅇ ㄴㄴㄴ</span> <button style="border: 1px; solid black">x</button> 
+            				<span>
+            					<b><%=rs.getString("writer") %></b> <%=rs.getString("reg_date").substring(0, 16) %>
+            				</span><br>
+            			<span ><%=rs.getString("comment") %></span> <button style="border: 1px; solid black">x</button> 
             			</form>
             			
-            		</div><br>
+            		</div><br>	
+					
+					<%			
+							}
+						} catch(SQLException e) {
+							System.out.println(e.getMessage());
+							e.printStackTrace();
+						} finally{
+							rs.close();
+							conn.close();
+							pstmt.close();
+						}
+					%>
+            	<div>
+            		
+            		
             		
             		
             	</div>	
