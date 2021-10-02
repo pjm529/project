@@ -94,7 +94,7 @@
 					ResultSet rs = null;
 					ResultSet rs2 = null;
 					
-					String count=null;
+					String count = null;
 				
 					try{
 						
@@ -114,7 +114,7 @@
 						while(rs.next()) {
 							
 							// comment 개수 출력
-							sql2 = "select count(*) as 'count' from board_comment where board_no="+rs.getString("num");
+							sql2 = "select count(*) as 'count' from board_comment where board_no=" + rs.getString("num");
 							
 							pstmt2 = conn.prepareStatement(sql2);
 							
@@ -161,10 +161,16 @@
 							e.printStackTrace();
 						} finally{
 							rs.close();
-							rs2.close();
 							conn.close();
 							pstmt.close();
-							pstmt2.close();
+							
+							if(rs2 != null){
+								rs2.close();
+							}
+							
+							if(pstmt2 != null){
+								pstmt2.close();
+							}
 						}
 					%>
 	
