@@ -32,21 +32,35 @@
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
+		PreparedStatement pstmt2 = null;
 		ResultSet rs = null;
+		ResultSet rs2 = null;
 		
-		
+		String count = null;
 		try {
 			Context init = new InitialContext();
 		    DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/MySQL");
 		    conn = ds.getConnection();
 		
 			String sql = "select * from enter where num=" + num;
-		
+			String sql2 = null;
+			
 			pstmt = conn.prepareStatement(sql);
 		
 			rs = pstmt.executeQuery();
 		
 			if (rs.next()) {
+				
+				sql2 = "select count(*) as 'count' from enter_comment where enter_no="+rs.getString("num");
+				
+				pstmt2 = conn.prepareStatement(sql2);
+				
+				rs2 = pstmt2.executeQuery();
+				
+				if(rs2.next()) {
+					count = rs2.getString("count");
+				}
+				
 				title = rs.getString("title");
 				content = rs.getString("content");
 				writer = rs.getString("writer");
@@ -59,8 +73,10 @@
 			e.printStackTrace();
 		}  finally{
 			rs.close();
+			rs2.close();
 			conn.close();
 			pstmt.close();
+			pstmt2.close();
 		}
 		
 		if(sessId.equals("admin") || pw_text.equals(pw)) {
@@ -137,7 +153,7 @@
 
 			<div id="comment">
 				<form action="" method="post">
-					<input type="hidden" name="enter_no" value=<%=num%>> <b>댓글</b><br>
+					<input type="hidden" name="enter_no" value=<%=num%>> <b>댓글</b> [<%=count %>]<br>
 					<input id="comment_text" name="comment_text" type="text" maxlength="30" autocomplete="off">
 					<button id="add_comment_btn">
 						<b>댓글달기</b>

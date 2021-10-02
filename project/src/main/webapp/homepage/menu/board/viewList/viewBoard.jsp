@@ -9,59 +9,72 @@
 	pageEncoding="UTF-8"%>
 
 <%
-String ssesId = (String) session.getAttribute("id");
-String num = request.getParameter("num");
-if (num == null) {
+	String ssesId = (String) session.getAttribute("id");
+	String num = request.getParameter("num");
+	if (num == null) {
 %>
-<script>
-	 		alert("비정상적인 접근입니다.");
-	 		window.location.href = '../../../index.jsp';
-	</script>
+		<script>
+	 			alert("비정상적인 접근입니다.");
+	 			window.location.href = '../../../index.jsp';
+		</script>
 
 <%
-} else {
-String title = null;
-String content = null;
-String writer = null;
-String writer_id = null;
-String reg_date = null;
-
-Connection conn = null;
-PreparedStatement pstmt = null;
-ResultSet rs = null;
-
-String sessId = (String) session.getAttribute("id");
-
-try {
-	Context init = new InitialContext();
-	DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/MySQL");
-	conn = ds.getConnection();
-
-	String sql = "select * from board where num=" + num;
-	// 2. 데이터베이스 커넥션 생성
-
-	// 3. PreparedStatement 생성
-	pstmt = conn.prepareStatement(sql);
-
-	// 4. 쿼리 실행
-	rs = pstmt.executeQuery();
-
-	// 5. 쿼리 실행 결과 출력
-	if (rs.next()) {
-		title = rs.getString("title");
-		content = rs.getString("content");
-		writer = rs.getString("writer");
-		writer_id = rs.getString("writer_id");
-		reg_date = rs.getString("reg_date").substring(0, 10);
+	} else {
+		String title = null;
+		String content = null;
+		String writer = null;
+		String writer_id = null;
+		String reg_date = null;
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		PreparedStatement pstmt2 = null;
+		ResultSet rs = null;
+		ResultSet rs2 = null;
+		
+		String count = null;
+		
+		String sessId = (String) session.getAttribute("id");
+		
+		try {
+			Context init = new InitialContext();
+			DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/MySQL");
+			conn = ds.getConnection();
+		
+			String sql = "select * from board where num=" + num;
+			String sql2 = null;
+			
+			pstmt = conn.prepareStatement(sql);
+		
+			rs = pstmt.executeQuery();
+		
+			if (rs.next()) {
+				sql2 = "select count(*) as 'count' from board_comment where board_no="+rs.getString("num");
+				
+				pstmt2 = conn.prepareStatement(sql2);
+				
+				rs2 = pstmt2.executeQuery();
+				
+				if(rs2.next()) {
+					count = rs2.getString("count");
+				}
+				
+				title = rs.getString("title");
+				content = rs.getString("content");
+				writer = rs.getString("writer");
+				writer_id = rs.getString("writer_id");
+				reg_date = rs.getString("reg_date").substring(0, 10);
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		} finally {
+			rs.close();
+			rs2.close();
+			conn.close();
+			pstmt.close();
+			pstmt2.close();
 	}
-} catch (SQLException e) {
-	System.out.println(e.getMessage());
-	e.printStackTrace();
-} finally {
-	rs.close();
-	conn.close();
-	pstmt.close();
-}
 %>
 <!DOCTYPE html>
 <html>
@@ -145,7 +158,7 @@ try {
 
 			<div id="comment">
 				<form action="" method="post">
-					<input type="hidden" name="board_no" value=<%=num%>> <b>댓글</b><br>
+					<input type="hidden" name="board_no" value=<%=num%>> <b>댓글</b> [<%=count %>]<br>
 					<input id="comment_text" name="comment_text" type="text" maxlength="30" autocomplete="off">
 					<button id="add_comment_btn">
 						<b>댓글달기</b>
