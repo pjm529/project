@@ -53,7 +53,7 @@
 				}
 			
 			response.sendRedirect("../process.jsp");
-		} else {
+ 		} else {
 %>	
 		<script>
 	 		alert("접근 권한이 없습니다.");

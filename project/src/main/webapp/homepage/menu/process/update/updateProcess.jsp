@@ -54,7 +54,7 @@
 			}
 			
 			response.sendRedirect("../viewList/viewProcess.jsp?num="+num);
-		} else {
+ 		} else {
 %>	
 		<script>
 	 		alert("접근 권한이 없습니다.");

@@ -31,7 +31,7 @@
 				Context init = new InitialContext();
 			    DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/MySQL");
 			    conn = ds.getConnection();
-				
+ 				
 				String sql = "delete from process where num =" + num;
 				
 				pstmt = conn.prepareStatement(sql);
