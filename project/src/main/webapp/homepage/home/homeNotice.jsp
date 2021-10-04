@@ -9,7 +9,7 @@
 	pageEncoding="UTF-8"%>
 
 <a href="menu/notice/notice.jsp">
-	<p>공지사항</p>
+	<p>공지사항　　　　　　　　　　　　　　　　　　　　　　　<span class="plus">+</span></p>
 </a>
 <hr>	
 <%

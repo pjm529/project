@@ -9,7 +9,7 @@
 	pageEncoding="UTF-8"%>
 
 <a href="menu/process/process.jsp">
-	<p>진행교육과정</p>
+	<p>진행교육과정　　　　　　　　　　　　　　　　　　　　　<span class="plus">+</span></p>
 </a>
 <hr>
 

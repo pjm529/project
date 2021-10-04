@@ -9,7 +9,7 @@
 	pageEncoding="UTF-8"%>
 	
 <a href="menu/enter/enter.jsp">
-	<p>문의사항</p>
+	<p>문의사항　　　　　　　　　　　　　　　　　　　　　　　<span class="plus">+</span></p>
 </a>
 <hr>	
 <%

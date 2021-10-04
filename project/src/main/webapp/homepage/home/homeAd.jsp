@@ -9,7 +9,7 @@
 	pageEncoding="UTF-8"%>
 
 <a href="menu/ad/ad.jsp">
-	<p>구인정보</p>
+	<p>구인정보　　　　　　　　　　　　　　　　　　　　　　　<span class="plus">+</span></p>
 </a>
 <hr>	
 <%

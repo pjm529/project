@@ -9,7 +9,7 @@
 	pageEncoding="UTF-8"%>
 
 <a href="menu/board/board.jsp">
-	<p>게시판</p>
+	<p>게시판　　　　　　　　　　　　　　　　　　　　　　　　<span class="plus">+</span></p>
 </a>
 <hr>	
 <%

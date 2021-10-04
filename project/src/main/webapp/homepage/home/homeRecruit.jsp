@@ -9,7 +9,7 @@
 	pageEncoding="UTF-8"%>
 
 <a href="menu/recruit/recruit.jsp">
-	<p>모집중인과정</p>
+	<p>모집중인과정　　　　　　　　　　　　　　　　　　　　　<span class="plus">+</span></p>
 </a>
 <hr>	
 
