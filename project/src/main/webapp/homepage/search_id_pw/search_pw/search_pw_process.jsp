@@ -14,6 +14,7 @@
 	String phone = request.getParameter("phone");
 	String email = request.getParameter("email");
 	String email_domain = request.getParameter("email_domain");
+	
 	Boolean success = false;
 	
 	
@@ -60,6 +61,11 @@
 	
 	if(success){
 		session.setAttribute("search_id", id);
+		session.setAttribute("search_name", name);
+		session.setAttribute("search_phone", phone);
+		session.setAttribute("search_email", email);
+		session.setAttribute("search_email_domain", email_domain);
+		
 		response.sendRedirect("update_pw_form.jsp");
 	} else {
 		response.sendRedirect("search_fail.jsp");

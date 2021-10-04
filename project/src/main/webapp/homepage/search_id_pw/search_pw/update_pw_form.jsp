@@ -3,7 +3,12 @@
     
 <%
 	String sessId = (String) session.getAttribute("search_id");
-	if(sessId == null) { 
+	String sessName = (String) session.getAttribute("search_name");
+	String sessPhone = (String) session.getAttribute("search_phone");
+	String sessEmail = (String) session.getAttribute("search_email");
+	String sessEmail_domain = (String) session.getAttribute("search_email_domain");
+	
+	if(sessId == null || sessName == null || sessPhone == null || sessEmail == null || sessEmail_domain == null) { 
 %>
 	<script>
 	 		alert("비정상적인 접근입니다.");
