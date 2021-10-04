@@ -58,11 +58,7 @@
 			conn.close();
 		}
 		
-		session.removeAttribute("search_id");
-		session.removeAttribute("search_name");
-		session.removeAttribute("search_phone");
-		session.removeAttribute("search_email");
-		session.removeAttribute("search_email_domain");
+		session.invalidate();
 %>		
 		<script>
 			alert("비밀번호 변경이 완료되었습니다.");
