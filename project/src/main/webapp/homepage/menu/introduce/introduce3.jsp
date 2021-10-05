@@ -23,7 +23,12 @@
 
 </head>
 <body>
-    <!-- <a href="#" class="top_btn">맨위로 가긴</a> -->
+
+	<div class="top_btn">
+		<a href="#"><img src="../../images/top_btn.png"></a>
+	</div>
+    
+    
 	<div id="wrap">
 
         <div id="header">
@@ -90,13 +95,13 @@
 	        	$("#intro3").css({ "background-color": "rgb(240,240,240)" });
 	        }
 	    });
-	    
+	    $('.top_btn').hide();
 		$(document).scroll(function () {
 			var y = $(this).scrollTop();
 			if (y > 800) {
-				$('.top_btn').show(1000);
+				$('.top_btn').show();
 			} else {
-				$('.top_btn').hide(1000);
+				$('.top_btn').hide();
 			}
 		});
 		

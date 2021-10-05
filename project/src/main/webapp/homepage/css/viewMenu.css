@@ -141,3 +141,10 @@ table {
 	top:0; 
 	background-color: white;
 }
+
+.top_btn{
+	position:  sticky;
+	display: block;
+	margin-left: 90%;
+	top: 50%;
+}

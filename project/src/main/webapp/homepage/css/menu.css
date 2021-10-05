@@ -161,20 +161,10 @@ hr{
     font-size: 20px;
 }
 
-
-/* #sidebar{
-   
-    padding-top: 20px;
-    padding-left: 5px;
-    border: 1px solid #d4d4d4;
-    width: 275px;
-    height: 120px;
-    background: #fbfbfb;
-} */
 .top_btn{
-	 position:  sticky;
+	position:  sticky;
 	display: block;
-	right: 1%;
+	margin-left: 90%;
 	top: 50%;
 }
 

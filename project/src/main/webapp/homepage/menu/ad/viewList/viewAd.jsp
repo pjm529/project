@@ -70,6 +70,10 @@
 <script src="../../../js/jquery-3.6.0.min.js"></script>
 </head>
 <body>
+
+	<div class="top_btn">
+		<a href="#"><img src="../../../images/top_btn.png"></a>
+	</div>
     <div id="wrap">
 
         <div id="header">
@@ -166,6 +170,16 @@
             $("#list_btn").click(function () {
             	window.location.href = '../ad.jsp';
             });
+            
+    	    $('.top_btn').hide();
+    	    $(document).scroll(function () {
+    			var y = $(this).scrollTop();
+    			if (y > 800) {
+    				$('.top_btn').show();
+    			} else {
+    				$('.top_btn').hide();
+    			}
+    		});
         });
     </script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

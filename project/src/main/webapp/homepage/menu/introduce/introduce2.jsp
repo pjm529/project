@@ -22,6 +22,11 @@
 <script src="../../js/jquery-3.6.0.min.js"></script>	
 </head>
 <body>
+
+	<div class="top_btn">
+		<a href="#"><img src="../../images/top_btn.png"></a>
+	</div>
+	
 	<div id="wrap">
 
         <div id="header">
@@ -86,6 +91,16 @@
 	        	$("#intro3").css({ "background-color": "rgb(240,240,240)" });
 	        }
 	    });
+	    
+	    $('.top_btn').hide();
+	    $(document).scroll(function () {
+			var y = $(this).scrollTop();
+			if (y > 800) {
+				$('.top_btn').show();
+			} else {
+				$('.top_btn').hide();
+			}
+		});
     </script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

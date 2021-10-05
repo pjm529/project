@@ -267,3 +267,9 @@ table img{
 .plus {
 	color: rgb(190,190,190);
 }
+.top_btn{
+	position:  sticky;
+	display: block;
+	margin-left: 90%;
+	top: 50%;
+}

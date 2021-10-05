@@ -35,6 +35,10 @@
 <script src="../../js/jquery-3.6.0.min.js"></script>
 </head>
 <body>
+
+	<div class="top_btn">
+		<a href="#"><img src="../../images/top_btn.png"></a>
+	</div>
     <div id="wrap">
 
         <div id="header">
@@ -191,6 +195,16 @@
                 }
             });
         });
+        
+	    $('.top_btn').hide();
+	    $(document).scroll(function () {
+			var y = $(this).scrollTop();
+			if (y > 800) {
+				$('.top_btn').show();
+			} else {
+				$('.top_btn').hide();
+			}
+		});
         
     </script>
     
