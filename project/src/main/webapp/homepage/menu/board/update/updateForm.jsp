@@ -75,6 +75,7 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
+<script src="../../../js/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <br>
@@ -166,7 +167,6 @@
     </div>
 
 
-    <script src="../../../js/jquery-3.6.0.min.js"></script>
     <script>
 		$(function () {
 			
@@ -192,82 +192,6 @@
 				 window.location.href = '../board.jsp';
 			});
 		});
-		
-/* ===========================================header menu css================================================ */
-    	
-    	$("#menu_notice").on({
-            "mouseover": function () {
-                $("#menu_notice").css({ "font-size": "18px" });
-            },
-            "mouseleave": function () {
-                $("#menu_notice").css({ "font-size": "16px" });
-            }
-        });
-        
-        $("#menu_process").on({
-            "mouseover": function () {
-                $("#menu_process").css({ "font-size": "18px" });
-            },
-            "mouseleave": function () {
-                $("#menu_process").css({ "font-size": "16px" });
-            }
-        });
-        
-        $("#menu_recruit").on({
-            "mouseover": function () {
-                $("#menu_recruit").css({ "font-size": "18px" });
-            },
-            "mouseleave": function () {
-                $("#menu_recruit").css({ "font-size": "16px" });
-            }
-        });
-        
-        $("#menu_board").on({
-            "mouseover": function () {
-                $("#menu_board").css({ "font-size": "18px" });
-            },
-            "mouseleave": function () {
-                $("#menu_board").css({ "font-size": "16px" });
-            }
-        });
-        
-        $("#menu_ad").on({
-            "mouseover": function () {
-                $("#menu_ad").css({ "font-size": "18px" });
-            },
-            "mouseleave": function () {
-                $("#menu_ad").css({ "font-size": "16px" });
-            }
-        });
-        
-        $("#menu_enter").on({
-            "mouseover": function () {
-                $("#menu_enter").css({ "font-size": "18px" });
-            },
-            "mouseleave": function () {
-                $("#menu_enter").css({ "font-size": "16px" });
-            }
-        });
-        
-        $("#menu_introduce").on({
-            "mouseover": function () {
-                $("#menu_introduce").css({ "font-size": "18px" });
-            },
-            "mouseleave": function () {
-                $("#menu_introduce").css({ "font-size": "16px" });
-            }
-        });
-        
-        $("#menu_road").on({
-            "mouseover": function () {
-                $("#menu_road").css({ "font-size": "18px" });
-            },
-            "mouseleave": function () {
-                $("#menu_road").css({ "font-size": "16px" });
-            }
-        });
-	    
-    	/* ======================================================================================================= */
     	
 	</script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
