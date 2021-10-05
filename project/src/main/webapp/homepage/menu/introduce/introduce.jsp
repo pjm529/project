@@ -8,7 +8,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" session="true"%>
     
-<% String sessId = (String)session.getAttribute("id"); %>
 
 <!DOCTYPE html>
 <html>
@@ -34,12 +33,24 @@
         <div id="container">
         
         	<div id="menu_title">
-        		<h2>교육원소개</h2> 
+        	
+        		<div id="intro_menu">
+        			<table align= center>
+        				<tr>
+        					<td id="intro1"><a href="#">인사말</a></td>
+        					<td id="intro2"><a href="introduce2.jsp">조직체계</a></td>
+        					<td id="intro3"><a href="introduce3.jsp">교육시설 및 장비</a></td>
+        				</tr>
+        			</table>
+        		</div><br>
+        		
+        		<h2>인사말</h2> 
         		<hr style="width: 1200px"> 
         		<br>
         	</div>
         	
-		     <div id="content">
+		     <div id="content">+
+		     	<img src="../../images/introduce/introduce.png" style="margin-left: 200px;">  
 		     </div>   
         </div>
 		        
@@ -49,7 +60,35 @@
 		</div>
 	</div>
     
+    <script>
     
+	    $("#intro1").on({
+	        "mouseover": function () {
+	        	$("#intro1").css({ "background-color": "rgb(204,204,204)" }); 
+	        },
+	        "mouseleave": function () {
+	        	$("#intro1").css({ "background-color": "rgb(240,240,240)" });
+	        }
+	    });
+	    
+	    $("#intro2").on({
+	        "mouseover": function () {
+	        	$("#intro2").css({ "background-color": "rgb(204,204,204)" }); 
+	        },
+	        "mouseleave": function () {
+	        	$("#intro2").css({ "background-color": "rgb(240,240,240)" });
+	        }
+	    });
+	    
+	    $("#intro3").on({
+	        "mouseover": function () {
+	        	$("#intro3").css({ "background-color": "rgb(204,204,204)" }); 
+	        },
+	        "mouseleave": function () {
+	        	$("#intro3").css({ "background-color": "rgb(240,240,240)" });
+	        }
+	    });
+    </script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>

@@ -144,3 +144,19 @@ hr{
     height: 30px;
     border: 1px solid rgb(214, 214, 214);
 }
+
+
+#intro_menu td{
+ 	border: 1px solid rgb(204, 204, 204);
+	width: 200px; 
+	height: 40px;
+	background-color: rgb(240, 240, 240);
+}
+
+#intro_menu a{
+    text-decoration: none;
+    color:black;
+    font-family: 'aritaSB';
+    font-weight: bold;
+    font-size: 20px;
+}
