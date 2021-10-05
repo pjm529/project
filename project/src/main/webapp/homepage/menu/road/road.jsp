@@ -16,8 +16,6 @@
 <script src="../../js/jquery-3.6.0.min.js"></script>	
 </head>
 <body>
-	<br>
-    
 	<div id="wrap">
 
         <div id="header">

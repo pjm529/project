@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<br>
 <div id="logo">
 	<a href="/project/homepage/index.jsp"><img
 		src="/project/homepage/images/index/logo.png" id="logo"></a>

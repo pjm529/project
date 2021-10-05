@@ -36,7 +36,6 @@
 
 </head>
 <body>
-	<br>
     <div id="wrap">
 
         <div id="header">

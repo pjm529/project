@@ -13,6 +13,9 @@
     /* border: 1px solid red; */
     text-align: center;
     padding: 20px;
+    position:sticky; 
+	top:0; 
+	background-color: white;
 
 }
 

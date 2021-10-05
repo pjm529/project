@@ -23,8 +23,7 @@
 
 </head>
 <body>
-	<br>
-    
+    <!-- <a href="#" class="top_btn">맨위로 가긴</a> -->
 	<div id="wrap">
 
         <div id="header">
@@ -62,6 +61,7 @@
 		
 	</div>
     
+    
     <script>
     
 	    $("#intro1").on({
@@ -90,6 +90,16 @@
 	        	$("#intro3").css({ "background-color": "rgb(240,240,240)" });
 	        }
 	    });
+	    
+		$(document).scroll(function () {
+			var y = $(this).scrollTop();
+			if (y > 800) {
+				$('.top_btn').show(1000);
+			} else {
+				$('.top_btn').hide(1000);
+			}
+		});
+		
     </script>
     
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
