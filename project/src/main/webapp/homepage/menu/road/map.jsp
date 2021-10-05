@@ -11,6 +11,7 @@
 #map_ma {
 	width: 1060px;
 	height: 400px;
+	clear: both;
 }
 </style>
 </head>
