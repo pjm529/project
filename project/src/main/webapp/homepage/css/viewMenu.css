@@ -140,6 +140,7 @@ table {
 	position:sticky; 
 	top:0; 
 	background-color: white;
+	z-index:1;
 }
 
 .top_btn{
