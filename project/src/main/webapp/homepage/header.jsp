@@ -31,7 +31,7 @@
 	$("#menu_notice").on({
 	    "mouseover": function () {
 	        $("#menu_notice a").css({ "color": "gray",
-	        						  "border-bottom": "1px solid gray"});
+	        						  "border-bottom": "2px solid gray"});
 	    },
 	    "mouseleave": function () {
 	        $("#menu_notice a").css({ "color": "black",
@@ -42,7 +42,7 @@
 	$("#menu_process").on({
 		"mouseover": function () {
 	        $("#menu_process a").css({ "color": "gray",
-	        						  "border-bottom": "1px solid gray"});
+	        						  "border-bottom": "2px solid gray"});
 	    },
 	    "mouseleave": function () {
 	        $("#menu_process a").css({ "color": "black",
@@ -53,7 +53,7 @@
 	$("#menu_recruit").on({
 		"mouseover": function () {
 	        $("#menu_recruit a").css({ "color": "gray",
-	        						  "border-bottom": "1px solid gray"});
+	        						  "border-bottom": "2px solid gray"});
 	    },
 	    "mouseleave": function () {
 	        $("#menu_recruit a").css({ "color": "black",
@@ -64,7 +64,7 @@
 	$("#menu_board").on({
 		"mouseover": function () {
 	        $("#menu_board a").css({ "color": "gray",
-	        						  "border-bottom": "1px solid gray"});
+	        						  "border-bottom": "2px solid gray"});
 	    },
 	    "mouseleave": function () {
 	        $("#menu_board a").css({ "color": "black",
@@ -75,7 +75,7 @@
 	$("#menu_ad").on({
 		"mouseover": function () {
 	        $("#menu_ad a").css({ "color": "gray",
-	        						  "border-bottom": "1px solid gray"});
+	        						  "border-bottom": "2px solid gray"});
 	    },
 	    "mouseleave": function () {
 	        $("#menu_ad a").css({ "color": "black",
@@ -86,7 +86,7 @@
 	$("#menu_enter").on({
 		"mouseover": function () {
 	        $("#menu_enter a").css({ "color": "gray",
-	        						  "border-bottom": "1px solid gray"});
+	        						  "border-bottom": "2px solid gray"});
 	    },
 	    "mouseleave": function () {
 	        $("#menu_enter a").css({ "color": "black",
@@ -97,7 +97,7 @@
 	$("#menu_introduce").on({
 		"mouseover": function () {
 	        $("#menu_introduce a").css({ "color": "gray",
-	        						  "border-bottom": "1px solid gray"});
+	        						  "border-bottom": "2px solid gray"});
 	    },
 	    "mouseleave": function () {
 	        $("#menu_introduce a").css({ "color": "black",
@@ -108,7 +108,7 @@
 	$("#menu_road").on({
 		"mouseover": function () {
 	        $("#menu_road a").css({ "color": "gray",
-	        						  "border-bottom": "1px solid gray"});
+	        						  "border-bottom": "2px solid gray"});
 	    },
 	    "mouseleave": function () {
 	        $("#menu_road a").css({ "color": "black",
