@@ -223,10 +223,17 @@
 			
 			let title = document.getElementById("title_text");
             let content = document.getElementById("content_text");
+            let training_period = document.getElementById("training_period");
+            let recruit_period = document.getElementById("recruit_period");
+            let time = document.getElementById("time");
+            let count = document.getElementById("count");
+            let location = document.getElementById("location");
+            let professor = document.getElementById("professor");
             let writer = document.getElementById("writer_text");
             
 			$("#insert_btn").click(function(){
-				if(title.value == "" || content.value == "" || writer.value == "") {
+				if (title.value == "" || content.value == "" || writer.value == "" || professor.value == "" || location.value == "" ||
+	                    training_period.value == "" || recruit_period.value == "" || time.value == "" || count.value == "") {
 					alert("입력 내용을 확인해주세요.");
 				} else {
 					if(writer.value.length > 6) {
