@@ -41,7 +41,7 @@
 				pstmt.executeUpdate();
 				pstmt2.executeUpdate();
 				
-				init(conn, pstmt); // 게시글번호 정렬
+				init(conn, pstmt, num); // 게시글번호 정렬
 					
 			} catch (SQLException e) {
 				System.out.println(e.getMessage());
@@ -66,7 +66,7 @@
 %>
 
 <%!	
-public void init(Connection conn, PreparedStatement pstmt) throws SQLException{
+public void init(Connection conn, PreparedStatement pstmt, String num) throws SQLException{
 	
 	ResultSet rs = null;
 	
@@ -111,9 +111,10 @@ public void init(Connection conn, PreparedStatement pstmt) throws SQLException{
 				"SET @CNT = 0", 
 				"UPDATE enter_comment SET enter_comment.num = @CNT:=@CNT+1",
 				"ALTER TABLE enter_comment AUTO_INCREMENT=" + (count + 1), 
+				"UPDATE enter_comment SET enter_no = enter_no - 1 where enter_no > " + num
 				};
 		
-		for(int i = 0 ; i < 4 ; i++) {
+		for(int i = 0 ; i < 5 ; i++) {
 			pstmt = conn.prepareStatement(sqlList[i]);
 			pstmt.executeUpdate();
 		}
