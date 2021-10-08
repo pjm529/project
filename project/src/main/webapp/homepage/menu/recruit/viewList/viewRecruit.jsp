@@ -108,7 +108,7 @@
                             <td class="td1"><b>교육기간</b></td>
                             <td class="td2"><%=training_period %></td>
                             <td class="td1"><b>등록일</b></td>
-                            <td class="td2" style="border-right: none;"><%=training_period %></td>
+                            <td class="td2" style="border-right: none;"><%=recruit_period %></td>
                         </tr>
                         
                         <tr>
