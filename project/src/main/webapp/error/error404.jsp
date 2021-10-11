@@ -45,7 +45,7 @@
                 },
                 
                 "click": function() {
-                	window.location.href = '/project2/index';
+                	window.location.href = '/project/homepage/index.jsp';
                 }
             });
         });
