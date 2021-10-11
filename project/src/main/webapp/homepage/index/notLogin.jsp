@@ -69,11 +69,6 @@
 					<jsp:include page="../home/homeLogin.jsp"></jsp:include> <!-- 로그인창 -->                
                 </div>
 
-                <div id="bkcolor">
-                    <button id="chgcolor" class="btn btn-secondary btn">배경색상 바꾸기</button>
-                    <button id="reset" class="btn btn-secondary btn">색상 초기화</button>
-                </div>
-
                 <div id="sns">
 					<jsp:include page="../home/homeSns.jsp"></jsp:include> <!-- sns 창-->   
                 </div>
@@ -144,14 +139,6 @@
     		}
 			
 		});
-    	
-        $("#chgcolor").click(function () {
-            $("body").css({ "background-color": rndColor() });
-        });
-
-        $("#reset").click(function () {
-            $("body").removeAttr("style");
-        });
 
     </script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
