@@ -193,12 +193,17 @@
                         </span>
                         
                         <span>
-                            <select id="email_domain" name="email_domain">
-                                <option value="@google.com">@google.com</option>
+                            <input id="email_domain" name="email_domain" type="text" autocomplete="off"
+                             readonly value="@google.com">
+                        </span>
+                        
+                        <span>
+                            <select id="email_domain2" name="email_domain2">
+                                <option value="@google.com" selected>@google.com</option>
                                 <option value="@naver.com">@naver.com</option>
                                 <option value="@daum.net">@daum.net</option>
                                 <option value="@nate.com">@nate.com</option>
-                                <option value="">직접입력</option>
+                                <option value="1">직접입력</option>
                             </select>
                         </span>
 
@@ -346,6 +351,19 @@
             let month = document.getElementById("month");
             let day = document.getElementById("day");
             let gender = document.getElementById("gender");
+            
+            $("#email_domain2").change(function(){
+        		if($(this).val() =='1') {
+        			$("#email_domain").val('');
+        			$("#email_domain").attr("readonly", false);
+        			$("#email_domain").css("background-color", "white");
+        			$("#email_domain").focus();
+        		} else {
+        			$("#email_domain").val($(this).val());
+        			$("#email_domain").attr("readonly", true);
+        			$("#email_domain").css({ "background-color": "rgb(240, 240, 240)"});
+        		}
+      	  	});
 
             $("#btn").on({
                 "mouseover": function () {
@@ -362,6 +380,7 @@
                 if (id.value == "" || (id.value.length < 6 || id.value.length > 12)) {
 
                     $(".err_id").show();
+                    $("#id").focus();
                     hide(8);
 
                 } else {
@@ -372,6 +391,7 @@
                     if ($.inArray(id.value, id_arr) != -1) {
 
                         $(".err_id2").show();
+                        $("#id").focus();
                         hide(7);
 					
                     } else {
@@ -382,6 +402,7 @@
                         if (pw.value == "" || (pw.value.length < 8 || pw.value.length > 17)) {
 
                             $(".err_pw").show();
+                            $("#pw").focus();
                             hide(6);
 
                         } else {
@@ -391,6 +412,7 @@
                             if (pw.value != chkpw.value || chkpw.value == "") {
 
                                 $(".err_chkpw").show();
+                                $("#chkpw").focus();
                                 hide(5);
 
                             } else {
@@ -400,6 +422,7 @@
                                 // name값 체크
                                 if (name.value == "" || name.value.length > 6) {
                                     $(".err_name").show();
+                                    $("#name").focus();
                                     hide(4);
                                 }
                                 else {
@@ -408,13 +431,15 @@
                                     // phone 체크
                                     if(phone.value.length != 11) {
                                     	$(".err_phone").show();
+                                    	$("#phone").focus();
                                     	hide(3);
                                     } else {
                                     	$(".err_phone").hide();
                                     	
                                     	// eamil 체크 
-                                    	if(email.value == "") {
+                                    	if(email.value == "" || email_domain.value == "") {
                                     		$(".err_email").show();
+                                    		$("#email").focus();
                                     		hide(2);
                                     	} else {
                                     		$(".err_email").hide();
@@ -422,6 +447,7 @@
                                     		//birth 체크
                                         	if (year.value.length != 4 || month.value == "" || day.value.length != 2) {
                                                 $(".err_birth").show();
+                                                $("#year").focus();
                                                 hide(1);
                                             } else {
                                                 $(".err_birth").hide();
@@ -429,6 +455,7 @@
                                                 // gender 체크
                                                 if (gender.value == "") {
                                                     $(".err_gender").show();
+                                                    $("#gender").focus();
                                                 } else {
                                                     // 필수조건 충족 시 회원가입
                                                     signup();

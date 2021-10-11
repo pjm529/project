@@ -86,7 +86,7 @@
 
 
         <div id="header">
-            <a href="../..index.jsp"><img src="../../images/index/logo.png" id="logo"></a>
+            <a href="../../index.jsp"><img src="../../images/index/logo.png" id="logo"></a>
         </div>
 
         <hr>
@@ -166,16 +166,21 @@
                         </span>
                         
                         <span>
-                            <select id="email_domain" name="email_domain">
-                                <option value=<%=email_domain %>><%=email_domain %></option>
+                            <input id="email_domain" name="email_domain" type="text" autocomplete="off"
+                             readonly value=<%=email_domain %>>
+                        </span>
+                        
+                        <span>
+                            <select id="email_domain2" name="email_domain2">
+                            	<option value=<%=email_domain %> selected><%=email_domain %></option>
                                 <option value="@google.com">@google.com</option>
                                 <option value="@naver.com">@naver.com</option>
                                 <option value="@daum.net">@daum.net</option>
                                 <option value="@nate.com">@nate.com</option>
-                                <option value="">직접입력</option>
+                                <option value="1">직접입력</option>
                             </select>
                         </span>
-
+                        
                         <div class="err_email">
 
                             <span class="text_err_email">
@@ -318,6 +323,19 @@
             let month = document.getElementById("month");
             let day = document.getElementById("day");
             let gender = document.getElementById("gender");
+            
+            $("#email_domain2").change(function(){
+        		if($(this).val() =='1') {
+        			$("#email_domain").val('');
+        			$("#email_domain").attr("readonly", false);
+        			$("#email_domain").css("background-color", "white");
+        			$("#email_domain").focus();
+        		} else {
+        			$("#email_domain").val($(this).val());
+        			$("#email_domain").attr("readonly", true);
+        			$("#email_domain").css({ "background-color": "rgb(240, 240, 240)"});
+        		}
+      	  	});
 
             $("#update_btn").on({
                 "mouseover": function () {
@@ -342,6 +360,7 @@
             	// name값 체크
                 if (name.value == "" || name.value.length > 6) {
                     $(".err_name").show();
+                    $("#name").focus();
                     hide(4);
                 }
                 else {
@@ -350,12 +369,14 @@
                     // phone 체크
                     if(phone.value.length != 11) {
                     	$(".err_phone").show();
+                    	$("#phone").focus();
                     	hide(3);
                     } else {
                     	$(".err_phone").hide();
                     	
-                    	if(email.value == "") {
+                    	if(email.value == "" || email_domain.value == "") {
                     		$(".err_email").show();
+                    		$("#email").focus();
                     		hide(2);
                     	} else {
                     		$(".err_email").hide();
@@ -363,6 +384,7 @@
                     		//birth 체크
                         	if (year.value.length != 4 || month.value == "" || day.value.length != 2) {
                                 $(".err_birth").show();
+                                $("#year").focus();
                                 hide(1);
                             } else {
                                 $(".err_birth").hide();
@@ -370,10 +392,11 @@
                                 // gender 체크
                                 if (gender.value == "") {
                                     $(".err_gender").show();
+                                    $("#gender").focus();
                                 } else {
-                            	alert("수정이 완료되었습니다.");
-    							$("form").attr("onsubmit", "return true;");
-    							$("form").attr("action", "updateProcess.jsp").submit();;
+	                            	alert("수정이 완료되었습니다.");
+	    							$("form").attr("onsubmit", "return true;");
+	    							$("form").attr("action", "updateProcess.jsp").submit();
                             	}
                         	}
                    	 	}

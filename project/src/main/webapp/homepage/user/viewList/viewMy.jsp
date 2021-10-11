@@ -159,12 +159,12 @@
 
                         <span>
                         	<input id="month" name="month" type="text"
-                        	value=<%=month %>월 style="width: 71px; height: 30px;" readonly>
+                        	value=<%=month %>월 style="width: 81px; height: 30px;" readonly>
                         </span>
 
                         <span>
                         	<input id="day" name="day" type="text"
-                        	value=<%=day %>일 style="width: 71px; height: 30px;" readonly>
+                        	value=<%=day %>일 style="width: 81px; height: 30px;" readonly>
                         </span>
        
                     </div>
@@ -182,7 +182,7 @@
                                 <%} else { 
                                 %>		여 
                                 <%
-                                } %> style="width: 250px; height: 30px;" readonly>
+                                } %> style="width: 290px; height: 30px;" readonly>
                         </span>
                         
                     </div>
